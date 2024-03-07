@@ -1,0 +1,95 @@
+<div class="register-wrapper mt-5" [dir]="'dir' | translate">
+  <div class="logo">
+    <img src="../../assets/images/logo.png" alt="" />
+  </div>
+  <div class="text-center mt-4 name">{{ "Register" | translate }}</div>
+  <form class="p-3 mt-3" [formGroup]="register" (ngSubmit)="onSubmit()">
+    <div
+      class="text-danger"
+      *ngIf="
+        register.controls['name'].touched && register.controls['name'].invalid
+      "
+    >
+      <div *ngIf="register.controls['name'].hasError('required')">
+        {{ "Name is required" | translate }}
+      </div>
+    </div>
+    <div class="form-field d-flex align-items-center">
+      <span class="fa fa-user"></span>
+      <input
+        formControlName="name"
+        type="text"
+        name="name"
+        id="name"
+        placeholder="{{ 'Choose a name' | translate }}"
+        required
+      />
+    </div>
+    <div
+      class="text-danger"
+      *ngIf="
+        register.controls['phone'].touched && register.controls['phone'].invalid
+      "
+    >
+      <div *ngIf="register.controls['phone'].hasError('required')">
+        {{ "Phone is required" | translate }}
+      </div>
+      <div *ngIf="register.controls['phone'].hasError('pattern')">
+        {{
+          "Invalid phone number format. Please enter a valid Egyptian phone number."
+            | translate
+        }}
+      </div>
+    </div>
+
+    <div class="form-field d-flex align-items-center">
+      <span class="fa fa-phone"></span>
+      <input
+        formControlName="phone"
+        type="text"
+        name="phone"
+        id="phone"
+        placeholder="{{ 'Enter Your Phone Number' | translate }}"
+        required
+      />
+    </div>
+
+    <div
+      class="text-danger"
+      *ngIf="
+        register.controls['password'].touched &&
+        register.controls['password'].invalid
+      "
+    >
+      <div *ngIf="register.controls['password'].hasError('required')">
+        {{ "password is required" | translate }}
+      </div>
+    </div>
+    <div class="form-field d-flex align-items-center">
+      <span class="fa fa-key"></span>
+      <input
+        formControlName="password"
+        [type]="showPassword ? 'text' : 'password'"
+        name="password"
+        id="password"
+        placeholder="{{ 'Choose a Password' | translate }}"
+        required
+      />
+      <app-hide-show-pass
+        (click)="togglePasswordVisibility()"
+      ></app-hide-show-pass>
+    </div>
+    <input
+      [disabled]="register.invalid"
+      type="submit"
+      value="{{ 'sign up' | translate }}"
+      class="btn mt-3"
+    />
+  </form>
+  <div class="text-center fs-6">
+    <a routerLink="/login"
+      >{{ "Already have an account?" | translate }}
+      {{ "Login here" | translate }}</a
+    >
+  </div>
+</div>
