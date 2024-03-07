@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./sub-navbar.component.css']
 })
 export class SubNavbarComponent {
-
+  email: string = 'info@rimansan.net';
+  email2: string = 'support@rimansan.net';
 }

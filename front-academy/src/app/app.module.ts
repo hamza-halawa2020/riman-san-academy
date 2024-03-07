@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgToastModule } from 'ng-angular-popup';
 import { HomeComponent } from './home/home.component';
 import { SharedModule } from './shared/shared.module';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
 @NgModule({
   declarations: [AppComponent, HomeComponent],
   imports: [
@@ -20,7 +21,8 @@ import { SharedModule } from './shared/shared.module';
     CommonModule,
     NgbModule,
     NgToastModule,
-    SharedModule
+    SharedModule,
+    CarouselModule.forRoot()
   ],
 
   providers: [],
