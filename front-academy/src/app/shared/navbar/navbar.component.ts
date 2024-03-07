@@ -1,7 +1,5 @@
 import { Component } from '@angular/core';
-import { NavigationStart, Router } from '@angular/router';
-import { TranslateService } from '@ngx-translate/core';
-import { Subscriber } from 'rxjs';
+import { Router } from '@angular/router';
 import { CartService } from 'src/app/services/cart/cart.service';
 import { LoginService } from 'src/app/services/login/login.service';
 
@@ -21,7 +19,6 @@ export class NavbarComponent {
   constructor(
     private cartApi: CartService,
     private authService: LoginService,
-    public translate: TranslateService,
     private router: Router
   ) {}
 
@@ -92,9 +89,3 @@ export class NavbarComponent {
   }
 }
 
-// updateCartTotal() {
-//   this.cartApi.getCart();
-//   this.cartApi.getcounterCart().subscribe((res: any) => {
-//     this.total = res.reduce((acc: number, item: any) => acc + item.quantity, 0);
-//   });
-// }

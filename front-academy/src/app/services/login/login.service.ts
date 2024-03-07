@@ -1,9 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
-import { NgToastService } from 'ng-angular-popup';
 import { CookieService } from 'ngx-cookie-service';
-import { TokenAuthInterceptor } from 'src/app/interceptor/token-auth.interceptor';
 import { environment } from 'src/environments/environment';
 
 @Injectable({

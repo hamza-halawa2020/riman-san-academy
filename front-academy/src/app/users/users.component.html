@@ -1,15 +1,15 @@
 <div class="container" *ngIf="loading">
   <app-loading></app-loading>
 </div>
-<div *ngIf="!loading" class="container mb-5" [dir]="'dir' | translate">
+<div *ngIf="!loading" class="container mb-5">
   <table class="table table-striped text-center">
     <thead>
       <tr>
-        <th scope="col">{{ "ID" | translate }}</th>
-        <th scope="col">{{ "Name" | translate }}</th>
-        <th scope="col">{{ "Mobile" | translate }}</th>
-        <th scope="col">{{ "Role" | translate }}</th>
-        <th scope="col">{{ "Action" | translate }}</th>
+        <th scope="col">ID</th>
+        <th scope="col">Name</th>
+        <th scope="col">Mobile</th>
+        <th scope="col">Role</th>
+        <th scope="col">Action</th>
       </tr>
     </thead>
     <tbody>
@@ -20,9 +20,7 @@
           <td>{{ user.phone }}</td>
           <td>{{ user.role }}</td>
           <td class="align-middle">
-            <!-- <a [routerLink]="['/user', user.id]" class="btn btn-primary m-1"
-            >Show</a
-          > -->
+
             <button class="btn btn-warning m-1" (click)="editUser(user)">
               {{ selectedUserIndex === i ? "Cancel" : "Edit" }}
             </button>
@@ -32,8 +30,7 @@
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
             >
-              <!-- <button (click)="deleteUser(user.id)" class="btn btn-danger m-1"> -->
-              {{ "Delete" | translate }}
+              Delete
 
               <!-- Modal -->
               <div
@@ -52,14 +49,14 @@
                         class="btn btn-secondary"
                         data-bs-dismiss="modal"
                       >
-                        {{ "Cancel" | translate }}
+                        Cancel
                       </button>
                       <button
                         type="button"
                         class="btn btn-danger"
                         (click)="deleteUser(user.id)"
                       >
-                        {{ "Delete" | translate }}
+                        Delete
                       </button>
                     </div>
                   </div>
@@ -71,26 +68,26 @@
         </tr>
         <tr *ngIf="selectedUserIndex === i">
           <td colspan="5">
-            <h2>{{ "Edit User" | translate }}</h2>
+            <h2>Edit User</h2>
             <table class="table table-striped text-center">
               <tr>
-                <th>{{ "Name" | translate }}</th>
+                <th>Name</th>
                 <td>
-                  <input class="form-control w-50" [(ngModel)]="user.name" />
+                  <input class="form-control w-50" {{[(ngModel)]="user.name"}} />
                 </td>
               </tr>
               <tr>
-                <th>{{ "Mobile" | translate }}</th>
+                <th>Mobile</th>
                 <td>
-                  <input class="form-control w-50" [(ngModel)]="user.phone" />
+                  <input class="form-control w-50" {{[(ngModel)]="user.phone"}} />
                 </td>
               </tr>
               <tr>
-                <th>{{ "Role" | translate }}</th>
+                <th>Role</th>
                 <td>
                   <select
                     class="form-control w-50"
-                    [(ngModel)]="selectedUser.role"
+                    {{[(ngModel)]="selectedUser.role"}}
                   >
                     <option *ngFor="let role of roles" [value]="role">
                       {{ role }}
@@ -104,10 +101,10 @@
                     class="btn btn-success m-1"
                     (click)="updateUser(user)"
                   >
-                    {{ "Save" | translate }}
+                    Save
                   </button>
                   <button class="btn btn-danger" (click)="cancelEdit()">
-                    {{ "Cancel" | translate }}
+                    Cancel
                   </button>
                 </td>
               </tr>

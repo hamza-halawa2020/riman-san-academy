@@ -1,5 +1,4 @@
 import { Injectable } from '@angular/core';
-import { TranslateService } from '@ngx-translate/core';
 import { NgToastService } from 'ng-angular-popup';
 import { BehaviorSubject, Subject } from 'rxjs';
 
@@ -10,7 +9,6 @@ export class CartService {
   total: any;
   constructor(
     private toast: NgToastService,
-    public translate: TranslateService
   ) {
     this.getCart(); // Load cart data as soon as the service is constructed
   }
@@ -53,8 +51,8 @@ export class CartService {
       );
       if (productAlreadyInCart) {
         this.toast.error({
-          detail: this.translate.instant('ERROR'),
-          summary: this.translate.instant('Product is already in the cart.'),
+          detail: 'ERROR',
+          summary: 'Product is already in the cart.',
           sticky: true,
           position: 'topCenter',
         });
@@ -62,8 +60,8 @@ export class CartService {
         this.cartDataList.push(myProduct);
         localStorage.setItem('cart', JSON.stringify(this.cartDataList));
         this.toast.success({
-          detail: this.translate.instant('SUCCESS'),
-          summary: this.translate.instant('product added succefully'),
+          detail: 'SUCCESS',
+          summary: 'product added succefully',
           position: 'topCenter',
         });
       }
@@ -81,8 +79,8 @@ export class CartService {
 
   //   if (productAlreadyInCart) {
   //     this.toast.error({
-  //       detail: this.translate.instant('ERROR'),
-  //       summary: this.translate.instant('Product is already in the cart.'),
+  //       detail: 'ERROR',
+  //       summary: 'Product is already in the cart.',
   //       sticky: true,
   //       position: 'topCenter',
   //     });
@@ -90,8 +88,8 @@ export class CartService {
   //     this.cartDataList.push(product);
   //     this.updateCartStorage();
   //     this.toast.success({
-  //       detail: this.translate.instant('SUCCESS'),
-  //       summary: this.translate.instant('product added succefully'),
+  //       detail: 'SUCCESS',
+  //       summary: 'product added succefully',
   //       position: 'topCenter',
   //     });
   //   }

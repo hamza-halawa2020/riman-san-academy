@@ -7,7 +7,6 @@ import { environment } from 'src/environments/environment';
   providedIn: 'root',
 })
 export class ReviewService {
-  // private apiUrl = 'https://rimansan.net/api';
   private apiUrl = environment.backEndUrl;
 
 

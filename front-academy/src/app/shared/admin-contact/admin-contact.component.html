@@ -1,28 +1,28 @@
 <div class="container" *ngIf="loading">
   <app-loading></app-loading>
 </div>
-<div *ngIf="!loading" class="container mb-5" [dir]="'dir' | translate">
+<div *ngIf="!loading" class="container mb-5" [dir]="'dir' ">
   <table class="table table-striped text-center">
     <thead>
       <tr>
-        <th scope="col">{{ "Index" | translate }}</th>
-        <th scope="col">{{ "Date" | translate }}</th>
-        <th scope="col">{{ "fullName" | translate }}</th>
-        <th scope="col">{{ "email" | translate }}</th>
-        <th scope="col">{{ "subject" | translate }}</th>
-        <th scope="col">{{ "message" | translate }}</th>
-        <th scope="col">{{ "Action" | translate }}</th>
+        <th scope="col"> "Index"  </th>
+        <th scope="col"> "Date"  </th>
+        <th scope="col"> "fullName"  </th>
+        <th scope="col"> "email"  </th>
+        <th scope="col"> "subject"  </th>
+        <th scope="col"> "message"  </th>
+        <th scope="col"> "Action"  </th>
       </tr>
     </thead>
     <tbody>
       <ng-container *ngFor="let contact of Contacts; let i = index">
         <tr class="align-middle">
-          <th scope="row">{{ i + 1 }}</th>
-          <td>{{ contact.created_at | date }}</td>
-          <td>{{ contact.fullName }}</td>
-          <td>{{ contact.email }}</td>
-          <td>{{ contact.subject }}</td>
-          <td>{{ contact.message }}</td>
+          <th scope="row"> i + 1 </th>
+          <td> contact.created_at | date </td>
+          <td> contact.fullName </td>
+          <td> contact.email </td>
+          <td> contact.subject </td>
+          <td> contact.message </td>
 
           <td class="align-middle">
             <button
@@ -31,7 +31,7 @@
               data-bs-toggle="modal"
               data-bs-target="#exampleModal"
             >
-              {{ "Delete" | translate }}
+               "Delete"  
 
               <!-- Modal -->
               <div
@@ -50,14 +50,14 @@
                         class="btn btn-secondary"
                         data-bs-dismiss="modal"
                       >
-                        {{ "Cancel" | translate }}
+                         "Cancel"  
                       </button>
                       <button
                         type="button"
                         class="btn btn-danger"
                         (click)="deleteContact(contact.id)"
                       >
-                        {{ "Delete" | translate }}
+                         "Delete"  
                       </button>
                     </div>
                   </div>

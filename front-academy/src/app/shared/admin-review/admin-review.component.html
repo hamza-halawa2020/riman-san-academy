@@ -49,7 +49,7 @@
                     <input
                       formControlName="title"
                       class="form-control w-50"
-                      [(ngModel)]="review.title"
+                      {{[(ngModel)]="review.title"}}
                     />
                   </td>
                 </tr>
@@ -59,7 +59,7 @@
                     <input
                       formControlName="stars"
                       class="form-control w-50"
-                      [(ngModel)]="review.stars"
+                      {{[(ngModel)]="review.stars"}}
                     />
                   </td>
                 </tr>
@@ -69,7 +69,7 @@
                     <textarea
                       formControlName="comment"
                       class="form-control w-50"
-                      [(ngModel)]="review.comment"
+                      {{[(ngModel)]="review.comment"}}
                     ></textarea>
                   </td>
                 </tr>
@@ -79,7 +79,7 @@
                     <input
                       formControlName="status"
                       class="form-control w-50"
-                      [(ngModel)]="review.status"
+                      {{[(ngModel)]="review.status"}}
                     />
                   </td>
                 </tr>
