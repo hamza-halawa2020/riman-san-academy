@@ -4,6 +4,8 @@ import { NavbarComponent } from './navbar/navbar.component';
 import { FooterComponent } from './footer/footer.component';
 import { SubNavbarComponent } from './sub-navbar/sub-navbar.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { BackToTopComponent } from './back-to-top/back-to-top.component';
+import { WhatsAppComponent } from './whats-app/whats-app.component';
 
 
 @NgModule({
@@ -11,6 +13,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     NavbarComponent,
     FooterComponent,
     SubNavbarComponent,
+    BackToTopComponent,
+    WhatsAppComponent,
     
   ],
   imports: [
@@ -22,6 +26,8 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     NavbarComponent,
     FooterComponent,
     SubNavbarComponent,
+    BackToTopComponent,
+    WhatsAppComponent
     
   ]
 })
