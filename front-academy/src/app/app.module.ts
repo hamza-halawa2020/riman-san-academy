@@ -7,11 +7,10 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgToastModule } from 'ng-angular-popup';
-import { HomeComponent } from './home/home.component';
 import { SharedModule } from './shared/shared.module';
-import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { HomPageModule } from './hom-page/hom-page.module';
 @NgModule({
-  declarations: [AppComponent, HomeComponent],
+  declarations: [AppComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
@@ -22,7 +21,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
     NgbModule,
     NgToastModule,
     SharedModule,
-    CarouselModule.forRoot()
+    HomPageModule,
   ],
 
   providers: [],

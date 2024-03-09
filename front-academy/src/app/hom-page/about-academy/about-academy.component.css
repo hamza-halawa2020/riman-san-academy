@@ -1,0 +1,29 @@
+.animated-button {
+  background-color: #26528b;
+  color: white;
+  font-size: 18px;
+  padding: 15px 35px;
+  border: none;
+  border-radius: 2px;
+  position: relative;
+  overflow: hidden;
+  transition: background-color 0.4s ease;
+  margin-top: 5px;
+}
+
+.animated-button::before {
+  content: attr(data-text); /* Using the data-text attribute for custom text */
+  padding: 15px 25px;
+  position: absolute;
+  top: 0;
+  left: -87%;
+  width: 92%;
+  height: 100%;
+  background-color: #f73131;
+  transition: left 0.4s ease;
+
+}
+
+.animated-button:hover::before {
+  left: 0;
+}
