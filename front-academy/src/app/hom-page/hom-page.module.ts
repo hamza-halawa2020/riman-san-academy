@@ -5,9 +5,10 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { CarouselComponent } from './carousel/carousel.component';
 import { AboutAcademyComponent } from './about-academy/about-academy.component';
 import { AvilableCoursesComponent } from './avilable-courses/avilable-courses.component';
+import { ChooseUsComponent } from './choose-us/choose-us.component';
 
 @NgModule({
-  declarations: [HomeComponent, CarouselComponent, AboutAcademyComponent, AvilableCoursesComponent],
+  declarations: [HomeComponent, CarouselComponent, AboutAcademyComponent, AvilableCoursesComponent, ChooseUsComponent],
   imports: [CommonModule, CarouselModule.forRoot()],
 })
 export class HomPageModule {}

@@ -9,6 +9,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgToastModule } from 'ng-angular-popup';
 import { SharedModule } from './shared/shared.module';
 import { HomPageModule } from './hom-page/hom-page.module';
+
 @NgModule({
   declarations: [AppComponent],
   imports: [
