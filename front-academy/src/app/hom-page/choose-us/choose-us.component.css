@@ -7,3 +7,10 @@
 .hover-icon:hover {
   transform: rotate(180deg) translateY(3px);
 }
+.card-icon {
+  transition: transform 0.3s ease-in-out;
+}
+
+.card:hover .card-icon {
+  transform: translateY(50px);
+}
