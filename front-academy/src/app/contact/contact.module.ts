@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AbouutUsComponent } from './abouut-us/abouut-us.component';
+import { RegisterComponent } from './register/register.component';
 import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
-    AbouutUsComponent,
+    RegisterComponent
   ],
   imports: [
     CommonModule,
     SharedModule
-    
   ]
 })
-export class AboutModule { }
+export class ContactModule { }

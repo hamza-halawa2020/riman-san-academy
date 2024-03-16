@@ -1,18 +1,17 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AbouutUsComponent } from './abouut-us/abouut-us.component';
+import { AchievementsComponent } from './achievements/achievements.component';
 import { SharedModule } from '../shared/shared.module';
 
 
 
 @NgModule({
   declarations: [
-    AbouutUsComponent,
+    AchievementsComponent
   ],
   imports: [
     CommonModule,
     SharedModule
-    
   ]
 })
-export class AboutModule { }
+export class AchievementsModule { }

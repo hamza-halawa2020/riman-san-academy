@@ -1,3 +1,5 @@
+import { AchievementsModule } from './achievements/achievements.module';
+import { ServicesModule } from './services/services.module';
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
@@ -9,6 +11,10 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { NgToastModule } from 'ng-angular-popup';
 import { SharedModule } from './shared/shared.module';
 import { HomPageModule } from './hom-page/hom-page.module';
+import { AboutModule } from './about/about.module';
+import { CoursesModule } from './courses/courses.module';
+import { CertificatesModule } from './certificates/certificates.module';
+import { ContactModule } from './contact/contact.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -23,6 +29,12 @@ import { HomPageModule } from './hom-page/hom-page.module';
     NgToastModule,
     SharedModule,
     HomPageModule,
+    AboutModule,
+    CoursesModule,
+    ServicesModule,
+    AchievementsModule,
+    CertificatesModule,
+    ContactModule
   ],
 
   providers: [],

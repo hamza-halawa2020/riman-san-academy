@@ -1,18 +1,19 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { AbouutUsComponent } from './abouut-us/abouut-us.component';
+import { CoursesComponent } from './courses/courses.component';
 import { SharedModule } from '../shared/shared.module';
+import { CardCourseComponent } from './card-course/card-course.component';
 
 
 
 @NgModule({
   declarations: [
-    AbouutUsComponent,
+    CoursesComponent,
+    CardCourseComponent
   ],
   imports: [
     CommonModule,
     SharedModule
-    
   ]
 })
-export class AboutModule { }
+export class CoursesModule { }

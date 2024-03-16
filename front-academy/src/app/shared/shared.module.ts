@@ -6,7 +6,8 @@ import { SubNavbarComponent } from './sub-navbar/sub-navbar.component';
 import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { BackToTopComponent } from './back-to-top/back-to-top.component';
 import { WhatsAppComponent } from './whats-app/whats-app.component';
-
+import { PageHeadersComponent } from './page-headers/page-headers.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
   declarations: [
@@ -15,20 +16,16 @@ import { WhatsAppComponent } from './whats-app/whats-app.component';
     SubNavbarComponent,
     BackToTopComponent,
     WhatsAppComponent,
-    
+    PageHeadersComponent,
   ],
-  imports: [
-    CommonModule,
-    CarouselModule.forRoot()
-  ],
-  exports:[
-    
+  imports: [CommonModule, RouterModule, CarouselModule.forRoot()],
+  exports: [
     NavbarComponent,
     FooterComponent,
     SubNavbarComponent,
     BackToTopComponent,
-    WhatsAppComponent
-    
-  ]
+    WhatsAppComponent,
+    PageHeadersComponent,
+  ],
 })
-export class SharedModule { }
+export class SharedModule {}

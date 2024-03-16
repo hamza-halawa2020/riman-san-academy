@@ -1,75 +1,95 @@
 <nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top mb-1">
-    
-    <div class="container">
-      <a class="navbar-brand" href="#">
-        <img src="https://london-academy.org/photos/shares/logo/logo.png" class="img-fluid" width="250px" alt="Logo">
-      </a>
-      
-      <button
-        class="navbar-toggler"
-        type="button"
-        data-bs-toggle="collapse"
-        data-bs-target="#navbarSupportedContent"
-        aria-controls="navbarSupportedContent"
-        aria-expanded="false"
-        aria-label="Toggle navigation"
-      >
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <!-- Navbar content -->
-      <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav ms-auto mb-2 mb-lg-0"> 
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">HOME</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="/about-us">ABOUT US</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">COURSES</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">SERVICES</a>
-          </li>
-          <li class="nav-item">
-            <a class="nav-link" aria-current="page" href="#">ACHIEVEMENTS</a>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              CERTIFICATES
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-          <li class="nav-item dropdown">
-            <a
-              class="nav-link dropdown-toggle"
-              href="#"
-              role="button"
-              data-bs-toggle="dropdown"
-              aria-expanded="false"
-            >
-              CONTACT US
-            </a>
-            <ul class="dropdown-menu">
-              <li><a class="dropdown-item" href="#">Action</a></li>
-              <li><a class="dropdown-item" href="#">Another action</a></li>
-              <li><hr class="dropdown-divider" /></li>
-              <li><a class="dropdown-item" href="#">Something else here</a></li>
-            </ul>
-          </li>
-        </ul>
-      </div>
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      <img
+        src="https://london-academy.org/photos/shares/logo/logo.png"
+        class="img-fluid"
+        width="250px"
+        alt="Logo"
+      />
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/">HOME</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/about-us"
+            >ABOUT US</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/courses"
+            >COURSES</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/services"
+            >SERVICES</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" aria-current="page" routerLink="/achievements"
+            >ACHIEVEMENTS</a
+          >
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            CERTIFICATES
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" routerLink="/accredited-certificates">
+                Accredited Certificates
+                <hr class="dropdown-divider" />
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="#">
+                Membership & Accreditation
+                <hr class="dropdown-divider" />
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li class="nav-item dropdown">
+          <a
+            class="nav-link dropdown-toggle"
+            routerLink="#"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            CONTACT US
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" routerLink="/register">
+                Register
+                <hr class="dropdown-divider" />
+              </a>
+            </li>
+          </ul>
+        </li>
+      </ul>
     </div>
-  </nav>
-  
+  </div>
+</nav>

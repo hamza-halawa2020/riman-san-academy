@@ -1,0 +1,29 @@
+.react-breadcrumbs
+  .breadcrumbs-wrap
+  .breadcrumbs-inner
+  .breadcrumbs-text
+  .breadcrumbs-title {
+  width: 100%;
+  font-size: 40px;
+  text-transform: uppercase;
+  color: #ffffff;
+  font-weight: 600;
+  line-height: 1;
+  margin: 0 0 15px;
+}
+.react-breadcrumbs .breadcrumbs-wrap {
+  position: relative;
+  overflow: hidden;
+}
+.react-breadcrumbs .breadcrumbs-wrap .breadcrumbs-inner {
+  width: 100%;
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+}
+.react-breadcrumbs .breadcrumbs-wrap .container {
+  position: relative;
+}
+.react-breadcrumbs .breadcrumbs-wrap .breadcrumbs-inner .breadcrumbs-text {
+  text-align: center;
+}
