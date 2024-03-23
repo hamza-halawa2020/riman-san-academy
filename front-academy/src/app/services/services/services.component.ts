@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./services.component.css']
 })
 export class ServicesComponent {
+  pageTitle: string = 'Services';
 
 }

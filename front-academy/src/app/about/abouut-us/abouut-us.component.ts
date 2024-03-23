@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./abouut-us.component.css']
 })
 export class AbouutUsComponent {
-
+  pageTitle: string = 'About Us';
 }

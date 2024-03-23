@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./accredited-certificates.component.css']
 })
 export class AccreditedCertificatesComponent {
+  pageTitle: string = 'certificates';
 
 }

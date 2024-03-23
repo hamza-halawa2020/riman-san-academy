@@ -6,5 +6,6 @@ import { Component } from '@angular/core';
   styleUrls: ['./achievements.component.css']
 })
 export class AchievementsComponent {
+  pageTitle: string = 'Achievements';
 
 }
