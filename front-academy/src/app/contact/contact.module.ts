@@ -1,17 +1,10 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RegisterComponent } from './register/register.component';
 import { SharedModule } from '../shared/shared.module';
-
-
+import { ContactComponent } from './contact/contact.component';
 
 @NgModule({
-  declarations: [
-    RegisterComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule
-  ]
+  declarations: [ContactComponent],
+  imports: [CommonModule, SharedModule],
 })
-export class ContactModule { }
+export class ContactModule {}

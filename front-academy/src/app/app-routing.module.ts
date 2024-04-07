@@ -8,8 +8,8 @@ import { CoursesComponent } from './courses/courses/courses.component';
 import { ServicesComponent } from './services/services/services.component';
 import { AchievementsComponent } from './achievements/achievements/achievements.component';
 import { AccreditedCertificatesComponent } from './certificates/accredited-certificates/accredited-certificates.component';
-import { RegisterComponent } from './contact/register/register.component';
 import { CourseDetailsComponent } from './courses/course-details/course-details.component';
+import { ContactComponent } from './contact/contact/contact.component';
 
 register();
 
@@ -45,7 +45,7 @@ const routes: Routes = [
   },
   {
     path: 'register',
-    component: RegisterComponent,
+    component: ContactComponent,
   },
 
 ];
