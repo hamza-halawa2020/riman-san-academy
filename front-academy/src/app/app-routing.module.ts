@@ -10,11 +10,13 @@ import { AchievementsComponent } from './achievements/achievements/achievements.
 import { AccreditedCertificatesComponent } from './certificates/accredited-certificates/accredited-certificates.component';
 import { CourseDetailsComponent } from './courses/course-details/course-details.component';
 import { ContactComponent } from './contact/contact/contact.component';
+import { LoginComponent } from './sign/login/login.component';
+import { RegisterComponent } from './sign/register/register.component';
+import { MemberShipComponent } from './certificates/member-ship/member-ship.component';
 
 register();
 
 const routes: Routes = [
- 
   {
     path: '',
     component: HomeComponent,
@@ -44,10 +46,21 @@ const routes: Routes = [
     component: AccreditedCertificatesComponent,
   },
   {
-    path: 'register',
+    path: 'member-ship',
+    component: MemberShipComponent,
+  },
+  {
+    path: 'contact-us',
     component: ContactComponent,
   },
-
+  {
+    path: 'login',
+    component: LoginComponent,
+  },
+  {
+    path: 'register',
+    component: RegisterComponent,
+  },
 ];
 
 @NgModule({

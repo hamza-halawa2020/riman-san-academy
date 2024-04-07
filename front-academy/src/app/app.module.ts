@@ -15,6 +15,7 @@ import { AboutModule } from './about/about.module';
 import { CoursesModule } from './courses/courses.module';
 import { CertificatesModule } from './certificates/certificates.module';
 import { ContactModule } from './contact/contact.module';
+import { SignModule } from './sign/sign.module';
 
 @NgModule({
   declarations: [AppComponent],
@@ -34,7 +35,8 @@ import { ContactModule } from './contact/contact.module';
     ServicesModule,
     AchievementsModule,
     CertificatesModule,
-    ContactModule
+    ContactModule,
+    SignModule
   ],
 
   providers: [],
