@@ -16,6 +16,7 @@ class AuthController extends Controller
     function __construct()
     {
         $this->middleware("limitReq");
+        $this->middleware("auth:sanctum")->only('logout');
     }
 
     public function login(LoginRequest $request)
@@ -23,8 +24,8 @@ class AuthController extends Controller
         try {
             $login = $request->validated();
             if (!Auth::attempt($login)) {
-                if (!User::where('phone', $login['phone'])->exists()) {
-                    return response(['message' => 'invalid phone'], 401);
+                if (!User::where('email', $login['email'])->exists()) {
+                    return response(['message' => 'invalid email'], 401);
                 } else if (!User::where('password', $login['password'])->exists()) {
                     return response(['message' => 'invalid password'], 401);
                 } else {
@@ -32,10 +33,12 @@ class AuthController extends Controller
                 }
             }
             $user = Auth::user();
-            $token = $user()->createToken($user->phone);
+            $token = $user->createToken($user->phone);
+
             return response([
                 'id' => $user->id,
-                'phone' => $user->phone,
+                'email' => $user->email,
+                'role' => $user->role,
                 'token' => $token->plainTextToken
 
             ]);
@@ -51,8 +54,17 @@ class AuthController extends Controller
             $user = User::create($validatedData);
             return response()->json(['data' => new UserResource($user)], 201);
         } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 201);
+            return response()->json(['error' => $e->getMessage()], 500);
         }
 
+    }
+
+    public function logout()
+    {
+        try {
+
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }

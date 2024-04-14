@@ -1,28 +1,86 @@
 <app-page-headers [pageTitle]="pageTitle"></app-page-headers>
 
+<div
+  class="container alert alert-warning text-center"
+  *ngIf="error"
+  role="alert"
+>
+  {{ error }}
+</div>
+
 <div class="container mb-5 mt-5">
-    <form>
-      <div class="mb-3">
-        <label for="exampleInputEmail1" class="form-label">Email address</label>
-        <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Enter email"
-        />
+  <form
+    class="bg-white py-5"
+    [formGroup]="loginForm"
+    (ngSubmit)="loginSubmitted()"
+  >
+    <div class="mb-3">
+      <label for="email" class="form-label">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+        placeholder="E-mail"
+      />
+
+      <div
+        class="form-text text-success"
+        *ngIf="Email.valid && (Email.touched || Email.dirty)"
+      >
+        <i class="fa-solid fa-check"></i>looks good!
       </div>
-      <div class="mb-3">
-        <label for="exampleInputPassword1" class="form-label">Password</label>
-        <input
-          type="password"
-          class="form-control"
-          id="exampleInputPassword1"
-          placeholder="Password"
-        />
+      <div
+        class="form-text text-danger"
+        *ngIf="Email.errors?.['required'] && (Email.dirty || Email.touched)"
+      >
+        <i class="fa-solid fa-circle-exclamation"></i>E-mail is important.
       </div>
-      <div class="text-center">
-        <button type="submit" class="btn btn-primary">Login</button>
+      <div
+        class="form-text text-danger"
+        *ngIf="Email.errors?.['pattern'] && (Email.dirty || Email.touched)"
+      >
+        <i class="fa-solid fa-circle-exclamation"></i>E-mail is invalid
       </div>
-    </form>
-  </div>
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+        placeholder="******"
+      />
+
+      <div
+        class="form-text text-success"
+        *ngIf="password.valid && (password.touched || password.dirty)"
+      >
+        <i class="fa-solid fa-check"></i>looks good!
+      </div>
+      <div
+        class="form-text text-danger"
+        *ngIf="password.errors?.['required'] && (password.dirty || password.touched)"
+      >
+        <i class="fa-solid fa-circle-exclamation"> </i>password is important
+      </div>
+      <div
+        class="form-text text-danger"
+        *ngIf="(password.errors?.['minlength'] || password.errors?.['maxlength']) && (password.dirty || password.touched)"
+      >
+        <i class="fa-solid fa-circle-exclamation"></i>password must be between 6
+        to 12
+      </div>
+    </div>
+    <div class="text-center">
+      <button
+        type="submit"
+        [disabled]="loginForm.invalid"
+        class="btn btn-primary"
+      >
+        Login
+      </button>
+    </div>
+  </form>
+</div>

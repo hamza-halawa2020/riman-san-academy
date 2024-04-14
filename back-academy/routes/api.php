@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\Api\AboutContoller;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\ServiceContoller;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
@@ -21,5 +23,11 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('users', UserController::class);
+Route::apiResource('abouts', AboutContoller::class);
+Route::get('randomShowAbout', [AboutContoller::class, 'randomShow']);
+
+Route::apiResource('services', ServiceContoller::class);
+Route::get('randomShowService', [ServiceContoller::class, 'randomShow']);
+
 Route::post('login', [AuthController::class, 'login']);
 Route::post('register', [AuthController::class, 'register']);

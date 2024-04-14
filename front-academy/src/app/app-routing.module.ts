@@ -3,7 +3,7 @@ import { RouterModule, Routes } from '@angular/router';
 
 import { register } from 'swiper/element/bundle';
 import { HomeComponent } from './hom-page/home/home.component';
-import { AbouutUsComponent } from './about/abouut-us/abouut-us.component';
+import { AboutUsComponent } from './about/about-us/about-us.component';
 import { CoursesComponent } from './courses/courses/courses.component';
 import { ServicesComponent } from './services/services/services.component';
 import { AchievementsComponent } from './achievements/achievements/achievements.component';
@@ -23,7 +23,7 @@ const routes: Routes = [
   },
   {
     path: 'about-us',
-    component: AbouutUsComponent,
+    component: AboutUsComponent,
   },
   {
     path: 'courses',

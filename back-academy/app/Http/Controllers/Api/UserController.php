@@ -27,7 +27,7 @@ class UserController extends Controller
             $users = User::paginate(10);
             return UserResource::collection($users);
         } catch (Exception $e) {
-            return response()->json($e, 500);
+            return response()->json(['error' => $e->getMessage()], 500);
         }
     }
 

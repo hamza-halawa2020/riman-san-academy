@@ -22,7 +22,8 @@ class StoreAboutRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'title' => '',
+            'description' => '',
         ];
     }
 }

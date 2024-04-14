@@ -1,0 +1,19 @@
+<app-page-headers [pageTitle]="pageTitle"></app-page-headers>
+
+<div class="container mt-5 mb-5">
+  <div class="row">
+    <div class="col-lg-6 col-sm-6">
+      <div class="about-section">
+        <h2 class="about-title">About London Academy</h2>
+        <div *ngFor="let about of aboutContent" class="about-item">
+          <h3 class="about-item-title">{{ about.title }}</h3>
+          <p class="about-item-description">{{ about.description }}</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-lg-6 col-sm-6">
+      <img src="https://london-academy.org/photos/shares/smiling-man.jpg" class="img-fluid rounded" alt="London Academy Image" />
+    </div>
+  </div>
+</div>

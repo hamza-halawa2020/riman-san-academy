@@ -1,0 +1,24 @@
+.about-section {
+    padding: 20px;
+  }
+  
+  .about-title {
+    font-size: 24px;
+    color: #333;
+    margin-bottom: 20px;
+  }
+  
+  .about-item {
+    margin-bottom: 20px;
+  }
+  
+  .about-item-title {
+    font-size: 20px;
+    color: #333;
+    margin-bottom: 10px;
+  }
+  
+  .about-item-description {
+    color: #666;
+  }
+  

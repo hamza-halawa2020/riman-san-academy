@@ -1,0 +1,87 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary sticky-top mb-1">
+  <div class="container">
+    <a class="navbar-brand" routerLink="/">
+      <!-- <img
+        src="https://london-academy.org/photos/shares/logo/logo.png"
+        class="img-fluid"
+        width="200px"
+        alt="Logo"
+      /> -->
+      Admin Panel
+    </a>
+
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <!-- Navbar content -->
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link" aria-current="page" routerLink="/">HOME</a>
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link" aria-current="page" routerLink="/about-us"
+            >ABOUT US</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link" aria-current="page" routerLink="/courses"
+            >COURSES</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link" aria-current="page" routerLink="/services"
+            >SERVICES</a
+          >
+        </li>
+        <li class="nav-item" *ngIf="isLoggedIn()">
+          <a class="nav-link" aria-current="page" routerLink="/achievements"
+            >ACHIEVEMENTS</a
+          >
+        </li>
+        <li class="nav-item dropdown" *ngIf="isLoggedIn()">
+          <a
+            class="nav-link dropdown-toggle"
+            role="button"
+            data-bs-toggle="dropdown"
+            aria-expanded="false"
+          >
+            CERTIFICATES
+          </a>
+          <ul class="dropdown-menu">
+            <li>
+              <a class="dropdown-item" routerLink="/accredited-certificates">
+                Accredited Certificates
+                <hr class="dropdown-divider" />
+              </a>
+            </li>
+            <li>
+              <a class="dropdown-item" routerLink="/member-ship">
+                Membership & Accreditation
+                <hr class="dropdown-divider" />
+              </a>
+            </li>
+          </ul>
+        </li>
+        <li *ngIf="isLoggedIn()">
+          <a class="nav-link" routerLink="/contact-us"> CONTACT US </a>
+        </li>
+        <li *ngIf="!isLoggedIn()">
+          <a class="nav-link" routerLink="/login">LOGIN</a>
+        </li>
+
+        <li *ngIf="isLoggedIn()">
+          <a class="nav-link" routerLink="" (click)="logout()">LOG OUT</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

@@ -4,7 +4,6 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { HttpClientModule } from '@angular/common/http';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { CommonModule } from '@angular/common';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
@@ -16,7 +15,9 @@ import { CoursesModule } from './courses/courses.module';
 import { CertificatesModule } from './certificates/certificates.module';
 import { ContactModule } from './contact/contact.module';
 import { SignModule } from './sign/sign.module';
-
+import { HTTP_INTERCEPTORS, HttpClientModule } from '@angular/common/http';
+import { TokenAuthInterceptor } from './interceptor/token-auth.interceptor';
+import { DatePipe } from '@angular/common';
 @NgModule({
   declarations: [AppComponent],
   imports: [
@@ -39,7 +40,14 @@ import { SignModule } from './sign/sign.module';
     SignModule
   ],
 
-  providers: [],
+  providers: [
+    {
+    provide: HTTP_INTERCEPTORS,
+    useClass:TokenAuthInterceptor,
+    multi: true
+  },
+  [DatePipe]
+],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
