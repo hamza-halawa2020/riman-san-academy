@@ -22,7 +22,7 @@ class StoreAchievementRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'description' => '',
         ];
     }
 }

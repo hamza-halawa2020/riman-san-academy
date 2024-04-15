@@ -37,17 +37,21 @@ import { DatePipe } from '@angular/common';
     AchievementsModule,
     CertificatesModule,
     ContactModule,
-    SignModule
+    ServicesModule,
+    SignModule,
+    AchievementsModule,
+    
+    
   ],
 
   providers: [
     {
-    provide: HTTP_INTERCEPTORS,
-    useClass:TokenAuthInterceptor,
-    multi: true
-  },
-  [DatePipe]
-],
+      provide: HTTP_INTERCEPTORS,
+      useClass: TokenAuthInterceptor,
+      multi: true,
+    },
+    [DatePipe],
+  ],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

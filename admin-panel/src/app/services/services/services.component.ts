@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ServiceService } from '../angular-service/service.service';
+import { environment } from 'src/environments/environment';
 
 @Component({
   selector: 'app-services',
@@ -11,6 +12,9 @@ export class ServicesComponent {
   formSubmitted: boolean = false;
   error: string = '';
   services: any;
+  apiImage = `${environment.imgUrl}images/services/`;
+
+  imageFile: any;
 
   constructor(private serviceService: ServiceService) {}
 
@@ -21,7 +25,7 @@ export class ServicesComponent {
   submitForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
     description: new FormControl('', [Validators.required]),
-    image: new FormControl(null), // Change to accept file input
+    image: new FormControl('', [Validators.required]),
   });
 
   get title(): FormControl {
@@ -45,14 +49,18 @@ export class ServicesComponent {
         'description',
         this.submitForm.value.description as string
       );
-      const imageFile = this.submitForm.value.image as File | null | undefined;
-      if (imageFile) {
-        formData.append('image', imageFile);
-      }
+
+      formData.append('image', this.imageFile as string);
+
       this.addservice(formData);
     } else {
       this.error = 'Form is invalid. Please fill all the required fields.';
     }
+  }
+
+  saveImageToDataBase(event: any) {
+    this.imageFile = event.target.files[0];
+    // console.log(this.imageFile);
   }
 
   addservice(formData: FormData) {

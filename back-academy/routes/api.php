@@ -1,7 +1,11 @@
 <?php
 
 use App\Http\Controllers\Api\AboutContoller;
+use App\Http\Controllers\Api\AchievementController;
 use App\Http\Controllers\Api\AuthController;
+use App\Http\Controllers\Api\CarouselController;
+use App\Http\Controllers\Api\CertificateController;
+use App\Http\Controllers\Api\ContactController;
 use App\Http\Controllers\Api\ServiceContoller;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -23,6 +27,13 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::apiResource('users', UserController::class);
+Route::apiResource('achievements', AchievementController::class);
+Route::apiResource('contacts', ContactController::class);
+Route::apiResource('carousels', CarouselController::class);
+
+Route::apiResource('certificates', CertificateController::class);
+Route::get('certificates/{serialNumber}', [CertificateController::class, 'showBySerialNumber']);
+
 Route::apiResource('abouts', AboutContoller::class);
 Route::get('randomShowAbout', [AboutContoller::class, 'randomShow']);
 

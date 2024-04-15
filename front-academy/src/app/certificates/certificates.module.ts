@@ -4,16 +4,8 @@ import { AccreditedCertificatesComponent } from './accredited-certificates/accre
 import { SharedModule } from '../shared/shared.module';
 import { MemberShipComponent } from './member-ship/member-ship.component';
 
-
-
 @NgModule({
-  declarations: [
-    AccreditedCertificatesComponent,
-    MemberShipComponent
-  ],
-  imports: [
-    CommonModule,
-    SharedModule
-  ]
+  declarations: [AccreditedCertificatesComponent, MemberShipComponent],
+  imports: [CommonModule, SharedModule],
 })
-export class CertificatesModule { }
+export class CertificatesModule {}

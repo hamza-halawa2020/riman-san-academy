@@ -29,12 +29,7 @@ class AboutContoller extends Controller
     public function randomShow()
     {
         try {
-            // Retrieve 2 random rows from the 'abouts' table
-            $abouts = DB::table('abouts')->inRandomOrder()->limit(2)->get()->map(function ($about) {
-                return (array) $about;
-            });
-            
-            // Return the result as a collection of arrays
+            $abouts = DB::table('abouts')->inRandomOrder()->limit(2)->get();
             return response()->json(['data' => $abouts], 200);
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);

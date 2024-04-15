@@ -14,6 +14,7 @@ import { LoginComponent } from './sign/login/login.component';
 import { MemberShipComponent } from './certificates/member-ship/member-ship.component';
 import { AuthGuard } from './guards/auth.guard';
 import { unauthGuard } from './guards/un-auth.guard';
+import { CarouselComponent } from './hom-page/carousel/carousel.component';
 
 register();
 
@@ -31,6 +32,11 @@ const routes: Routes = [
   {
     path: 'courses',
     component: CoursesComponent,
+    canActivate: [AuthGuard],
+  },
+  {
+    path: 'carousels',
+    component: CarouselComponent,
     canActivate: [AuthGuard],
   },
   {

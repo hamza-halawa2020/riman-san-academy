@@ -22,7 +22,8 @@ class StoreCertificateRequest extends FormRequest
     public function rules(): array
     {
         return [
-            //
+            'serial_number' => '',
+            'image' => '',
         ];
     }
 }

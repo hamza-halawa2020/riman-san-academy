@@ -1,9 +1,9 @@
 <carousel [interval]="5000" [showIndicators]="true" [noPause]="false">
-    <slide>
-      <img src="https://london-academy.org/photos/shares/sliders/bannerbg-01.jpg" class="img-fluid" alt="Slide 1">
-    </slide>
-    <slide>
-      <img src="https://london-academy.org/photos/shares/sliders/bannerbg-02.jpg" class="img-fluid" alt="Slide 2">
-    </slide>
-
-  </carousel>
+  <slide *ngFor="let carousel of carousels">
+    <img
+      src="{{ apiImage + carousel.image }}"
+      class="img-fluid"
+      alt="{{ carousel.image }}"
+    />
+  </slide>
+</carousel>

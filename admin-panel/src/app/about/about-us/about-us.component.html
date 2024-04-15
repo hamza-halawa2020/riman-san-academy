@@ -95,17 +95,19 @@
                 class="btn btn-primary"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
+                [attr.data-bs-target]="'#exampleModal' + about.id"
+
               >
                 Delete
               </button>
 
               <!-- Modal -->
               <div
-                class="modal fade"
-                id="exampleModal"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
+              class="modal fade"
+              [id]="'exampleModal' + about.id"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
               >
                 <div class="modal-dialog">
                   <div class="modal-content">

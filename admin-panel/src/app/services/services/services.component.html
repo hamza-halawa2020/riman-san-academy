@@ -17,6 +17,7 @@
           id="imageInput"
           aria-describedby="imageHelp"
           formControlName="image"
+          (change)="saveImageToDataBase($event)"
         />
         <div
           class="form-text text-success"
@@ -109,11 +110,16 @@
           <tr *ngFor="let service of services">
             <td>{{ service.id }}</td>
             <td>{{ service.title }}</td>
-           
+
             <td>{{ service.description }}</td>
             <td>
-              <img src="{{ service.image }}" alt="{{ service.image }}" />
+              <img
+                src="{{ apiImage + service.image }}"
+                alt="{{ service.image }}"
+                width="50px"
+              />
             </td>
+
             <td>
               <!-- Button trigger modal -->
               <button
@@ -121,17 +127,19 @@
                 class="btn btn-primary"
                 data-bs-toggle="modal"
                 data-bs-target="#exampleModal"
+                [attr.data-bs-target]="'#exampleModal' + service.id"
+
               >
                 Delete
               </button>
 
               <!-- Modal -->
               <div
-                class="modal fade"
-                id="exampleModal"
-                tabindex="-1"
-                aria-labelledby="exampleModalLabel"
-                aria-hidden="true"
+              class="modal fade"
+              [id]="'exampleModal' + service.id"
+              tabindex="-1"
+              aria-labelledby="exampleModalLabel"
+              aria-hidden="true"
               >
                 <div class="modal-dialog">
                   <div class="modal-content">

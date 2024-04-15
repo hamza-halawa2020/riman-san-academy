@@ -2,6 +2,9 @@
 <div class="container mt-5 mb-5">
   <div class="">
     <div class="h1 mb-4">Contact Us</div>
+    <div class="alert alert-warning text-center" *ngIf="error" role="alert">
+      {{ error }}
+    </div>
     <p class="mb-4">
       Our dedicated Instructor Support Team is available to address your
       inquiries and provide feedback on your test video. Additionally, our
@@ -9,36 +12,77 @@
       throughout the process.
     </p>
 
-    <form>
+    <form [formGroup]="submitForm" (ngSubmit)="Submitted()">
       <div class="row">
         <div class="col-lg-6 col-sm-12 mb-3">
           <input
-            type="email"
+            type="text"
             class="form-control"
-            id="exampleInputEmail1"
-            aria-describedby="emailHelp"
+            id="exampleInputName"
+            aria-describedby="nameHelp"
             placeholder="Name"
+            formControlName="name"
           />
+
+          <div
+            class="form-text text-success"
+            *ngIf="name.valid && (name.touched || name.dirty)"
+          >
+            <i class="fas fa-check"></i> Looks good!
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="name.errors?.['required'] && (name.dirty || name.touched)"
+          >
+            <i class="fas fa-exclamation-circle"></i> Name is required.
+          </div>
         </div>
         <div class="col-lg-6 col-sm-12 mb-3">
           <input
             type="email"
             class="form-control"
-            id="exampleInputEmail1"
+            id="exampleInputEmail"
             aria-describedby="emailHelp"
             placeholder="Email"
+            formControlName="email"
           />
-        </div>
-      </div>
 
-      <div class="col-lg-12 col-sm-12 mb-3">
-        <input
-          type="email"
-          class="form-control"
-          id="exampleInputEmail1"
-          aria-describedby="emailHelp"
-          placeholder="Phone"
-        />
+          <div
+            class="form-text text-success"
+            *ngIf="email.valid && (email.touched || email.dirty)"
+          >
+            <i class="fas fa-check"></i> Looks good!
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="email.errors?.['required'] && (email.dirty || email.touched)"
+          >
+            <i class="fas fa-exclamation-circle"></i> Email is required.
+          </div>
+        </div>
+        <div class="col-lg-12 col-sm-12 mb-3">
+          <input
+            type="text"
+            class="form-control"
+            id="exampleInputPhone"
+            aria-describedby="phoneHelp"
+            placeholder="Phone"
+            formControlName="phone"
+          />
+
+          <div
+            class="form-text text-success"
+            *ngIf="phone.valid && (phone.touched || phone.dirty)"
+          >
+            <i class="fas fa-check"></i> Looks good!
+          </div>
+          <div
+            class="form-text text-danger"
+            *ngIf="phone.errors?.['required'] && (phone.dirty || phone.touched)"
+          >
+            <i class="fas fa-exclamation-circle"></i> Phone is required.
+          </div>
+        </div>
       </div>
 
       <div class="input-group mb-3">
@@ -47,11 +91,29 @@
           aria-label="With textarea"
           placeholder="Message"
           rows="6"
+          formControlName="message"
         ></textarea>
+
+        <div
+          class="form-text text-success"
+          *ngIf="message.valid && (message.touched || message.dirty)"
+        >
+          <i class="fas fa-check"></i> Looks good!
+        </div>
+        <div
+          class="form-text text-danger"
+          *ngIf="message.errors?.['required'] && (message.dirty || message.touched)"
+        >
+          <i class="fas fa-exclamation-circle"></i> Message is required.
+        </div>
       </div>
 
-      <div class="containermt-5 mb-5">
-        <div class="btn btn-dark size">
+      <div class="container mt-5 mb-5">
+        <button
+          class="btn btn-dark size"
+          [disabled]="submitForm.invalid"
+          type="submit"
+        >
           Send
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -66,7 +128,7 @@
               d="M1 8a.5.5 0 0 1 .5-.5h11.793l-3.147-3.146a.5.5 0 0 1 .708-.708l4 4a.5.5 0 0 1 0 .708l-4 4a.5.5 0 0 1-.708-.708L13.293 8.5H1.5A.5.5 0 0 1 1 8"
             />
           </svg>
-        </div>
+        </button>
       </div>
     </form>
   </div>
