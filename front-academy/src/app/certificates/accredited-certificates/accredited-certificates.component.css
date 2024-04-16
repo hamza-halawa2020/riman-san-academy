@@ -1,7 +1,15 @@
-.size{
-    font-size: 18px;
-    padding: 15px 45px;
+.size {
+  font-size: 18px;
+  padding: 15px 45px;
 }
 
+.myIframe {
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease;
+}
 
-
+.myIframe:hover {
+  box-shadow: 0 12px 12px rgba(0, 0, 0, 0.8);
+}

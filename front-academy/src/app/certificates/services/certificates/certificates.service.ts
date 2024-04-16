@@ -3,19 +3,18 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 
 @Injectable({
-  providedIn: 'root'
+  providedIn: 'root',
 })
-export class CarouselService {
+export class CertificatesService {
   private apiUrl = environment.backEndUrl;
+
   constructor(private http: HttpClient) {}
 
   getAll() {
-    return this.http.get(`${this.apiUrl}carousels`);
+    return this.http.get(`${this.apiUrl}certificates`);
   }
 
-  randomShow() {
-    return this.http.get(`${this.apiUrl}randomShowCarousel`);
+  showBySerialNumber(id: string) {
+    return this.http.get(`${this.apiUrl}certificates-serial/${id}`);
   }
-
-
 }

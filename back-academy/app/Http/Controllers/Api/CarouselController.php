@@ -8,6 +8,7 @@ use App\Http\Resources\CarouselResource;
 use App\Models\Carousel;
 use Illuminate\Http\Request;
 use Exception;
+use Illuminate\Support\Facades\DB;
 
 class CarouselController extends Controller
 {
@@ -19,6 +20,16 @@ class CarouselController extends Controller
         try {
             $carousels = Carousel::paginate(10);
             return CarouselResource::collection($carousels);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
+    public function randomShow()
+    {
+        try {
+            $carousels = DB::table('carousels')->inRandomOrder()->limit(1)->get();
+            return response()->json(['data' => $carousels], 200);
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }

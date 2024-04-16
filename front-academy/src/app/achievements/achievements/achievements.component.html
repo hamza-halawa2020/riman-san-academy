@@ -8,12 +8,12 @@
         {{ achievement.description }}
       </p>
     </div>
-    <div class="col-lg-6 col-sm-12">
+    <div class="col-lg-6 col-sm-12" *ngFor="let carousel of carousels">
       <img
-        src="https://london-academy.org/photos/shares/22234.jpg"
-        class="img-thumbnail"
+        src="{{ apiImage + carousel.image }}"
+        class="img-fluid rounded"
+        alt="{{ carousel.title }}"
         width="550px"
-        alt="..."
       />
     </div>
   </div>

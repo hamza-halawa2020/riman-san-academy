@@ -28,10 +28,12 @@ export class SignService {
   getTokenFromCookie(): any {
     return this.cookieService.get('token');
   }
+  isLoggedIn() {
+    return this.getTokenFromCookie();
+  }
 
   logout() {
     this.cookieService.deleteAll();
     this.router.navigate(['']);
   }
-  
 }

@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import { Router } from '@angular/router';
 import { SignService } from 'src/app/sign/services/sign.service';
 
 @Component({
@@ -8,7 +7,7 @@ import { SignService } from 'src/app/sign/services/sign.service';
   styleUrls: ['./navbar.component.css'],
 })
 export class NavbarComponent {
-  constructor(private authService: SignService, private router: Router) {}
+  constructor(private authService: SignService) {}
   isLoggedIn(): boolean {
     return !!this.authService.isLoggedIn();
   }

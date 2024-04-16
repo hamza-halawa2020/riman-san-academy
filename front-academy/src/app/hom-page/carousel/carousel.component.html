@@ -1,4 +1,19 @@
-<carousel [interval]="5000" [showIndicators]="true" [noPause]="false">
+<!-- <carousel [interval]="5000" [showIndicators]="true" [noPause]="false">
+  <slide *ngFor="let carousel of carousels">
+    <img
+      src="{{ apiImage + carousel.image }}"
+      class="img-fluid"
+      alt="{{ carousel.image }}"
+    />
+  </slide>
+</carousel> -->
+
+<carousel
+  [interval]="5000"
+  [showIndicators]="true"
+  [noPause]="false"
+  class="custom-carousel"
+>
   <slide *ngFor="let carousel of carousels">
     <img
       src="{{ apiImage + carousel.image }}"
@@ -7,3 +22,4 @@
     />
   </slide>
 </carousel>
+

@@ -29,10 +29,12 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('users', UserController::class);
 Route::apiResource('achievements', AchievementController::class);
 Route::apiResource('contacts', ContactController::class);
+
 Route::apiResource('carousels', CarouselController::class);
+Route::get('randomShowCarousel', [CarouselController::class, 'randomShow']);
 
 Route::apiResource('certificates', CertificateController::class);
-Route::get('certificates/{serialNumber}', [CertificateController::class, 'showBySerialNumber']);
+Route::get('certificates-serial/{serialNumber}', [CertificateController::class, 'showBySerialNumber']);
 
 Route::apiResource('abouts', AboutContoller::class);
 Route::get('randomShowAbout', [AboutContoller::class, 'randomShow']);

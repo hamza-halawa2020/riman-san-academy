@@ -12,8 +12,12 @@
       </div>
     </div>
 
-    <div class="col-lg-6 col-sm-6">
-      <img src="https://london-academy.org/photos/shares/smiling-man.jpg" class="img-fluid rounded" alt="London Academy Image" />
+    <div class="col-lg-6 col-sm-6" *ngFor="let carousel of carousels">
+      <img
+        src="{{ apiImage + carousel.image }}"
+        class="img-fluid rounded"
+        alt="{{ carousel.title }}"
+      />
     </div>
   </div>
 </div>
