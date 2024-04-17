@@ -38,7 +38,6 @@ export class AboutUsComponent {
     this.CarouselService.randomShow().subscribe(
       (data: any) => {
         this.carousels = Object.values(data)[0];
-        console.log(this.carousels);
       },
       (error: any) => {
         console.error('Error fetching about content:', error);
