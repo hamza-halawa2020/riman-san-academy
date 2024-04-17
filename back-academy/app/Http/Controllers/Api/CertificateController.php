@@ -9,6 +9,7 @@ use App\Models\Certificate;
 use Illuminate\Http\Request;
 use Exception;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Storage;
 
 class CertificateController extends Controller
 {
@@ -50,20 +51,50 @@ class CertificateController extends Controller
     }
 
 
-public function showBySerialNumber(string $serialNumber)
-{
-    try {
-        $certificate = Certificate::where('serial_number', $serialNumber)->first();
-        
-        if (!$certificate) {
-            return response()->json(['error' => 'Certificate not found'], 404);
+    public function showBySerialNumber(string $serialNumber)
+    {
+        try {
+            $certificate = Certificate::where('serial_number', $serialNumber)->first();
+
+            if (!$certificate) {
+                return response()->json(['error' => 'Certificate not found'], 404);
+            }
+
+            return new CertificateResource($certificate);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
         }
-        
-        return new CertificateResource($certificate);
-    } catch (Exception $e) {
-        return response()->json(['error' => $e->getMessage()], 500);
     }
-}
+
+    // public function downloadFile(string $id)
+    // {
+    //     try {
+    //         $file = Certificate::findOrFail($id);
+    //         return Storage::download($file);
+
+    //     } catch (Exception $e) {
+    //         return response()->json(['error' => $e->getMessage()], 500);
+    //     }
+
+    // }
+
+    public function downloadFile(string $id)
+    {
+        try {
+            $certificate = Certificate::findOrFail($id);
+
+            $filePath = public_path('images/certificates/' . $certificate->image);
+
+            if (!file_exists($filePath)) {
+                return response()->json(['error' => 'File not found'], 404);
+            }
+
+            return response()->download($filePath, $certificate->image);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+
 
 
     /**

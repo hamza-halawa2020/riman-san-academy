@@ -44,6 +44,50 @@ export class AccreditedCertificatesComponent implements OnInit {
     );
   }
 
+  // downloadFile(id: any) {
+  //   this.certificateservice.downloadFile(id).subscribe(
+  //     (res) => {
+  //       this.certificates = Object.values(res)[0];
+  //       console.log(this.certificates);
+  //     },
+  //     () => {
+  //       this.error = 'Not Found';
+  //       console.log(this.certificates);
+  //     }
+  //   );
+  // }
+
+  // downloadFile(id: any) {
+  //   this.certificateservice.downloadFile(id).subscribe(
+  //     (res: any) => {
+  //       // Handle success
+  //       console.log('Download successful');
+  //     },
+  //     (error) => {
+  //       // Handle error
+  //       console.error('Error occurred during file download:', error);
+  //     }
+  //   );
+  // }
+
+  downloadFile(id: any) {
+    this.certificateservice.downloadFile(id).subscribe(
+      (blob: Blob) => {
+        const url = window.URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = this.certificates.serial_number;
+        document.body.appendChild(a);
+        a.click();
+        window.URL.revokeObjectURL(url);
+        document.body.removeChild(a);
+      },
+      (error) => {
+        this.error = 'Error occurred during file download:';
+      }
+    );
+  }
+
   Submitted(): void {
     if (this.submitForm.valid) {
       this.serialNumber = this.submitForm.get('serialNumber')!.value;
@@ -52,12 +96,4 @@ export class AccreditedCertificatesComponent implements OnInit {
       this.error = 'Invalid form';
     }
   }
-
-
-
-
-
-
-
-  
 }

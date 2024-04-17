@@ -44,12 +44,13 @@
     class="myIframe mb-2"
   ></iframe>
 
-  <a
-    [href]="apiImage + certificates.image"
-    [download]="'Certificate ' + apiImage + certificates.image"
-    target="_blank"
-    class="btn btn-dark size text-center mt-2"
-  >
-    Download Your Certificate Now
-  </a>
+  <div class="container mb-5 text-center">
+    <a
+      (click)="downloadFile(certificates.id)"
+      class="btn btn-dark size text-center mt-2"
+      target="_blank"
+    >
+      Download Your Certificate Now
+    </a>
+  </div>
 </div>
