@@ -37,12 +37,13 @@
 </form>
 
 <div class="container mb-5 text-center" *ngIf="certificates">
-  <div class="container mb-5 text-center">
+  <div class="container mb-2 text-center">
     <a
       (click)="downloadFile(certificates.id)"
       class="btn btn-success size text-center mt-2"
     >
       Download Your Certificate Now
+      <i class="fa-solid fa-file-pdf fa-beat-fade fa-xl"></i>
     </a>
   </div>
   <iframe
