@@ -36,39 +36,12 @@ export class AccreditedCertificatesComponent implements OnInit {
     this.certificateservice.showBySerialNumber(id).subscribe(
       (res) => {
         this.certificates = Object.values(res)[0];
-        // console.log(this.certificates);
       },
       () => {
         this.error = 'Not Found';
       }
     );
   }
-
-  // downloadFile(id: any) {
-  //   this.certificateservice.downloadFile(id).subscribe(
-  //     (res) => {
-  //       this.certificates = Object.values(res)[0];
-  //       console.log(this.certificates);
-  //     },
-  //     () => {
-  //       this.error = 'Not Found';
-  //       console.log(this.certificates);
-  //     }
-  //   );
-  // }
-
-  // downloadFile(id: any) {
-  //   this.certificateservice.downloadFile(id).subscribe(
-  //     (res: any) => {
-  //       // Handle success
-  //       console.log('Download successful');
-  //     },
-  //     (error) => {
-  //       // Handle error
-  //       console.error('Error occurred during file download:', error);
-  //     }
-  //   );
-  // }
 
   downloadFile(id: any) {
     this.certificateservice.downloadFile(id).subscribe(
