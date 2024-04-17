@@ -18,12 +18,9 @@ export class CertificatesService {
     return this.http.get(`${this.apiUrl}certificates-serial/${id}`);
   }
 
-  // downloadFile(id: string) {
-  //   return this.http.get(`${this.apiUrl}certificates-downloadFile/${id}`);
-  // }
-
   downloadFile(id: string) {
-    return this.http.get(`${this.apiUrl}certificates-downloadFile/${id}`, { responseType: 'blob' });
+    return this.http.get(`${this.apiUrl}certificates-downloadFile/${id}`, {
+      responseType: 'blob',
+    });
   }
-  
 }

@@ -11,11 +11,14 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('certificates', function (Blueprint $table) {
+        Schema::create('course_videos', function (Blueprint $table) {
             $table->id();
             $table->timestamps();
-            $table->string('serial_number');
-            $table->string('file');
+            $table->string('title');
+            $table->string('video');
+            $table->foreignId('course_id')->constrained('courses')->onUpdate('cascade')->onDelete('cascade');
+            
+
 
         });
     }
@@ -25,6 +28,6 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('certificates');
+        Schema::dropIfExists('course_videos');
     }
 };

@@ -35,13 +35,13 @@ class CertificateController extends Controller
         try {
             $validatedData = $request->validated();
 
-            if ($request->hasFile('image')) {
-                $image = $request->file('image');
-                $extension = $image->getClientOriginalExtension();
+            if ($request->hasFile('file')) {
+                $file = $request->file('file');
+                $extension = $file->getClientOriginalExtension();
                 $filename = time() . '_' . uniqid() . '.' . $extension;
-                $folderPath = 'images/certificates/';
-                $image->move(public_path($folderPath), $filename);
-                $validatedData['image'] = $filename;
+                $folderPath = 'file/certificates/';
+                $file->move(public_path($folderPath), $filename);
+                $validatedData['file'] = $filename;
             }
             $certificate = certificate::create($validatedData);
             return response()->json(['data' => new CertificateResource($certificate)], 201);
@@ -66,30 +66,19 @@ class CertificateController extends Controller
         }
     }
 
-    // public function downloadFile(string $id)
-    // {
-    //     try {
-    //         $file = Certificate::findOrFail($id);
-    //         return Storage::download($file);
-
-    //     } catch (Exception $e) {
-    //         return response()->json(['error' => $e->getMessage()], 500);
-    //     }
-
-    // }
 
     public function downloadFile(string $id)
     {
         try {
             $certificate = Certificate::findOrFail($id);
 
-            $filePath = public_path('images/certificates/' . $certificate->image);
+            $filePath = public_path('file/certificates/' . $certificate->file);
 
             if (!file_exists($filePath)) {
                 return response()->json(['error' => 'File not found'], 404);
             }
 
-            return response()->download($filePath, $certificate->image);
+            return response()->download($filePath, $certificate->file);
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
@@ -121,9 +110,9 @@ class CertificateController extends Controller
         try {
             $certificate = Certificate::findOrFail($id);
 
-            $imagePath = public_path('images/certificates/' . $certificate->image);
-            if (file_exists($imagePath)) {
-                unlink($imagePath);
+            $path = public_path('file/certificates/' . $certificate->file);
+            if (file_exists($path)) {
+                unlink($path);
             }
 
             $certificate->delete();

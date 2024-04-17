@@ -18,21 +18,21 @@
           id="exampleInputEmail1"
           aria-describedby="emailHelp"
           placeholder="icon"
-          formControlName="image"
+          formControlName="file"
           (change)="saveImageToDataBase($event)"
         />
 
         <div
           class="form-text text-success"
-          *ngIf="image.valid && (image.touched || image.dirty)"
+          *ngIf="file.valid && (file.touched || file.dirty)"
         >
           <i class="fas fa-check"></i> Looks good!
         </div>
         <div
           class="form-text text-danger"
-          *ngIf="image.errors?.['required'] && (image.dirty || image.touched)"
+          *ngIf="file.errors?.['required'] && (file.dirty || file.touched)"
         >
-          <i class="fas fa-exclamation-circle"></i> image is required.
+          <i class="fas fa-exclamation-circle"></i> file is required.
         </div>
       </div>
       <div class="col-lg-12 col-sm-12 mb-3">
@@ -92,11 +92,9 @@
 
               <td>{{ certificate.serial_number }}</td>
               <td>
-                <img
-                  src="{{ apiImage + certificate.image }}"
-                  alt="{{ certificate.image }}"
-                  width="50px"
-                />
+                <a target="_blank" href="{{ apiImage + certificate.file }}"
+                  >Open File</a
+                >
               </td>
 
               <td>

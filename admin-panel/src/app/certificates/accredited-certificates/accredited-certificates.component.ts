@@ -12,7 +12,7 @@ export class AccreditedCertificatesComponent {
   formSubmitted: boolean = false;
   error: string = '';
   certificates: any;
-  apiImage = `${environment.imgUrl}images/certificates/`;
+  apiImage = `${environment.imgUrl}file/certificates/`;
 
   imageFile: any;
 
@@ -24,15 +24,15 @@ export class AccreditedCertificatesComponent {
 
   submitForm = new FormGroup({
     serial_number: new FormControl('', [Validators.required]),
-    image: new FormControl('', [Validators.required]),
+    file: new FormControl('', [Validators.required]),
   });
 
   get serial_number(): FormControl {
     return this.submitForm.get('serial_number') as FormControl;
   }
 
-  get image(): FormControl {
-    return this.submitForm.get('image') as FormControl;
+  get file(): FormControl {
+    return this.submitForm.get('file') as FormControl;
   }
 
   Submitted() {
@@ -45,7 +45,7 @@ export class AccreditedCertificatesComponent {
         this.submitForm.value.serial_number as string
       );
 
-      formData.append('image', this.imageFile as string);
+      formData.append('file', this.imageFile as string);
 
       this.addcertificate(formData);
     } else {

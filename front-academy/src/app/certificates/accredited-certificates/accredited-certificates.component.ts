@@ -12,7 +12,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
 export class AccreditedCertificatesComponent implements OnInit {
   pageTitle: string = 'certificates';
   certificates: any;
-  apiImage = `${environment.imgUrl}images/certificates/`;
+  apiImage = `${environment.imgUrl}file/certificates/`;
   serialNumber: any;
   formSubmitted: boolean = false;
   error: string = '';
