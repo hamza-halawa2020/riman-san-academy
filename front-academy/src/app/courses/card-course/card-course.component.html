@@ -1,17 +1,22 @@
-<div class="col-4">
-  <div class="card mb-4" style="width: 18rem">
-    <img
-      src="https://london-academy.org/lms/uploads/course/1709832226-RFK1IfM5ls.jpg"
-      class="card-img-top"
-      alt="..."
-    />
-    <div class="card-body">
-      <a  routerLink="/cousreDDDDD" class="h5 card-title">Distinction in customer service</a>
-      <p class="card-text">
-        It takes months to find a customer, and seconds to lose them. “Maybe
-        this is one of the... The most famous sayings
-      </p>
-      <a routerLink="/cousreDDDDD" class="btn btn-primary">Read more</a>
+<div class="container">
+  <div class="row">
+    <div class="col-md-4 col-sm-6 col-12" *ngFor="let course of courseContent">
+      <div class="card mb-4">
+        <img
+          src="{{ imageUrl + course.img }}"
+          class="card-img-top"
+          alt="{{ imageUrl + course.img }}"
+        />
+        <div class="card-body">
+          <a [routerLink]="'/course/' + course.id" class="h5 card-title">
+            {{ course.title }}
+          </a>
+          <p class="card-text">{{ course.description }}</p>
+          <a [routerLink]="'/course/' + course.id" class="btn btn-primary"
+            >Read more</a
+          >
+        </div>
+      </div>
     </div>
   </div>
 </div>

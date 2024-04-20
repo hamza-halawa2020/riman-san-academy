@@ -6,6 +6,8 @@ use App\Http\Controllers\Api\AuthController;
 use App\Http\Controllers\Api\CarouselController;
 use App\Http\Controllers\Api\CertificateController;
 use App\Http\Controllers\Api\ContactController;
+use App\Http\Controllers\Api\CourseController;
+use App\Http\Controllers\Api\CourseVideoController;
 use App\Http\Controllers\Api\ServiceContoller;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Http\Request;
@@ -29,6 +31,8 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::apiResource('users', UserController::class);
 Route::apiResource('achievements', AchievementController::class);
 Route::apiResource('contacts', ContactController::class);
+Route::apiResource('courses', CourseController::class);
+Route::apiResource('videos', CourseVideoController::class);
 
 Route::apiResource('carousels', CarouselController::class);
 Route::get('randomShowCarousel', [CarouselController::class, 'randomShow']);

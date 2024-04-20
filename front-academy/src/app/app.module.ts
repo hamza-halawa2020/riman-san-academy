@@ -40,8 +40,6 @@ import { DatePipe } from '@angular/common';
     ServicesModule,
     SignModule,
     AchievementsModule,
-    
-    
   ],
 
   providers: [

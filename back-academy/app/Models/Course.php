@@ -11,14 +11,11 @@ class Course extends Model
     protected $fillable = [
         'title',
         'description',
+        'img',
         'price',
-        'user_allowed_access_course',
     ];
 
-    public function user()
-    {
-        return $this->belongsTo(User::class);
-    }
+
     public function courseVideos()
     {
         return $this->hasMany(CourseVideo::class);

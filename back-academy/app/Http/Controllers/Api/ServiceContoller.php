@@ -54,8 +54,9 @@ class ServiceContoller extends Controller
             }
 
             $service = Service::create($validatedData);
+            return new ServiceResource($service);
 
-            return response()->json(['data' => new ServiceResource($service)], 201);
+            // return response()->json(['data' => new ServiceResource($service)], 201);
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }

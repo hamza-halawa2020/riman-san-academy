@@ -1,31 +1,25 @@
-<div class="container mt-5 mb-5">
+<div class="container mt-5 mb-5" *ngIf="course">
   <div class="row">
     <div class="col-9">
-      <div>PRINCE 2</div>
+      <div>{{ course.title }}</div>
       <div>
-        Why Use A Project Management Method? Project Management Methodologies
-        What Is PRINCE2? Comparison to PMBOK Key Features Benefits of Using
-        Prince2 Prince2 Foundation Exam Prince2 Foundation Course Objectives
-        Prince2 Practitioner Examination Six Aspects of Project Structure of
-        Prince2 Principles of prince2 PRINCE2 Themes The PRINCE2 Processes
+        {{ course.description }}
       </div>
-      <div>| Author Level 5</div>
-      <div>0.0 (0) 0 Students</div>
     </div>
     <div class="col-3">
       <div class="card" style="width: 18rem">
         <img
-          src="https://london-academy.org/lms/thumbs/600x400/uploads/course/1709829294-lDdXUqqqWc.jpg"
+          src="{{ imageUrl + course.img }}"
           class="card-img-top"
-          alt="..."
+          alt="{{ imageUrl + course.img }}"
         />
         <div class="card-body">
           <div class="row">
             <div class="col-8">
-              <p class="">£ 50.00 £ 75.00</p>
+              <p class="">price</p>
             </div>
             <div class="col-4">
-              <small class=""> 33.33% off</small>
+              <small class=""> {{ course.price }}</small>
             </div>
           </div>
 

@@ -21,6 +21,7 @@ class DatabaseSeeder extends Seeder
             'profile_img' => 'test',
             'gender' => 'male',
             'password' => '123456',
+            'role' => 'admin',
         ]);
     }
 }
