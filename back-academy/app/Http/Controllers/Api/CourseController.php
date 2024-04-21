@@ -74,6 +74,13 @@ class CourseController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        try {
+            $course = Course::with('courseVideos')->findOrFail($id);
+            $course->delete();
+            return response()->json(['error' => 'deleted'], 200);
+
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
     }
 }
