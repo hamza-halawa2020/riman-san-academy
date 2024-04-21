@@ -25,8 +25,8 @@ export class CoursesService {
     return this.http.post(`${this.apiUrl}videos`, data);
   }
 
-  getAllVideo() {
-    return this.http.get(`${this.apiUrl}videos`);
+  showVideosByCourseID() {
+    return this.http.get(`${this.apiUrl}showVideosByCourseID`);
   }
 
   deleteVideo(id: any) {
