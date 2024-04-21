@@ -33,16 +33,12 @@ export class CourseDetailsComponent {
     title: new FormControl('', [Validators.required]),
 
     video: new FormControl('', [Validators.required]),
-    // course_id: new FormControl('', [Validators.required]),
   });
 
   get title(): FormControl {
     return this.submitForm.get('title') as FormControl;
   }
 
-  // get course_id(): FormControl {
-  //   return this.submitForm.get('course_id') as FormControl;
-  // }
 
   get video(): FormControl {
     return this.submitForm.get('video') as FormControl;
@@ -84,7 +80,6 @@ export class CourseDetailsComponent {
     this.videoService.getAllVideo().subscribe(
       (res: any) => {
         this.videos = Object.values(res)[0];
-        console.log('this.videos', this.videos);
       },
       () => {
         this.error = 'Error loading videos. Please try again later.';
