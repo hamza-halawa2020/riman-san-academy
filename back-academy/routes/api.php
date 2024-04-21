@@ -32,7 +32,10 @@ Route::apiResource('users', UserController::class);
 Route::apiResource('achievements', AchievementController::class);
 Route::apiResource('contacts', ContactController::class);
 Route::apiResource('courses', CourseController::class);
+
 Route::apiResource('videos', CourseVideoController::class);
+Route::get('courses/{course_id}/videos', [CourseVideoController::class, 'showVideosByCourseID']);
+http://localhost:8000/api/courses/{course_id}/videos
 
 Route::apiResource('carousels', CarouselController::class);
 Route::get('randomShowCarousel', [CarouselController::class, 'randomShow']);

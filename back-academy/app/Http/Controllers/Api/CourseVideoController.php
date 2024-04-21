@@ -23,6 +23,29 @@ class CourseVideoController extends Controller
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+
+
+
+    public function showVideosByCourseID($courseId)
+    {
+        try {
+            $videos = CourseVideo::with('course')
+                                ->where('course_id', $courseId)
+                                ->get();
+    
+            return CourseVideoResource::collection($videos);
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
+        }
+    }
+    
+
+
+
+
+
+
+
     /**
      * Store a newly created resource in storage.
      */
