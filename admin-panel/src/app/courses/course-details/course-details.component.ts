@@ -17,7 +17,10 @@ export class CourseDetailsComponent {
   courseId: any;
   videoFile: any;
 
-  constructor(private videoService: CoursesService) {}
+  constructor(
+    private route: ActivatedRoute,
+    private videoService: CoursesService
+  ) {}
 
   ngOnInit() {
     this.loadvideos();
@@ -40,8 +43,7 @@ export class CourseDetailsComponent {
       this.formSubmitted = true;
       const formData = new FormData();
       formData.append('title', this.submitForm.value.title as string);
-      formData.append('course_id', this.videos.course_id);
-      console.log('course_id', this.videos.course_id);
+      formData.append('course_id', this.courseId);
 
       formData.append('video', this.videoFile as string);
 
@@ -69,14 +71,17 @@ export class CourseDetailsComponent {
   }
 
   loadvideos() {
-    this.videoService.showVideosByCourseID(this.courseId).subscribe(
-      (res: any) => {
-        this.videos = Object.values(res)[0];
-      },
+    this.route.params.subscribe((params) => {
+      this.courseId = +params['id'];
+      this.videoService
+        .showVideosByCourseID(this.courseId)
+        .subscribe((res: any) => {
+          this.videos = Object.values(res)[0];
+        });
+    }),
       () => {
         this.error = 'Error loading videos. Please try again later.';
-      }
-    );
+      };
   }
 
   deletevideo(id: string) {

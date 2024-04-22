@@ -30,15 +30,15 @@ class CourseVideoController extends Controller
     {
         try {
             $videos = CourseVideo::with('course')
-                                ->where('course_id', $courseId)
-                                ->get();
-    
+                ->where('course_id', $courseId)
+                ->get();
+
             return CourseVideoResource::collection($videos);
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
-    
+
 
 
 
@@ -53,6 +53,15 @@ class CourseVideoController extends Controller
     {
         try {
             $validatedData = $request->validated();
+            if ($request->hasFile('video')) {
+                $video = $request->file('video');
+                $extension = $video->getClientOriginalExtension();
+                $filename = time() . '_' . uniqid() . '.' . $extension;
+                $folderPath = 'videos/courses/' . $validatedData['course_id'];
+
+                $video->move(public_path($folderPath), $filename);
+                $validatedData['video'] = $filename;
+            }
             $video = CourseVideo::create($validatedData);
             return new CourseVideoResource($video);
         } catch (Exception $e) {
