@@ -17,28 +17,20 @@ export class CourseDetailsComponent {
   courseId: any;
   videoFile: any;
 
-  constructor(
-    private route: ActivatedRoute,
-    private videoService: CoursesService
-  ) {}
+  constructor(private videoService: CoursesService) {}
 
   ngOnInit() {
-    this.route.queryParams.subscribe((params) => {
-      this.courseId = params['course_id'];
-    });
     this.loadvideos();
   }
 
   submitForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
-
     video: new FormControl('', [Validators.required]),
   });
 
   get title(): FormControl {
     return this.submitForm.get('title') as FormControl;
   }
-
   get video(): FormControl {
     return this.submitForm.get('video') as FormControl;
   }
@@ -48,7 +40,8 @@ export class CourseDetailsComponent {
       this.formSubmitted = true;
       const formData = new FormData();
       formData.append('title', this.submitForm.value.title as string);
-      formData.append('course_id', this.courseId);
+      formData.append('course_id', this.videos.course_id);
+      console.log('course_id', this.videos.course_id);
 
       formData.append('video', this.videoFile as string);
 
