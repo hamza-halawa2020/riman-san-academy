@@ -34,8 +34,7 @@ Route::apiResource('contacts', ContactController::class);
 Route::apiResource('courses', CourseController::class);
 
 Route::apiResource('videos', CourseVideoController::class);
-Route::get('courses/{course_id}/videos', [CourseVideoController::class, 'showVideosByCourseID']);
-http://localhost:8000/api/courses/{course_id}/videos
+Route::get('courses/videos/{course_id}', [CourseVideoController::class, 'showVideosByCourseID']);
 
 Route::apiResource('carousels', CarouselController::class);
 Route::get('randomShowCarousel', [CarouselController::class, 'randomShow']);

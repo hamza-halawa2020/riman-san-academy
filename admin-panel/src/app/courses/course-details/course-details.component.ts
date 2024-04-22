@@ -39,7 +39,6 @@ export class CourseDetailsComponent {
     return this.submitForm.get('title') as FormControl;
   }
 
-
   get video(): FormControl {
     return this.submitForm.get('video') as FormControl;
   }
@@ -77,7 +76,7 @@ export class CourseDetailsComponent {
   }
 
   loadvideos() {
-    this.videoService.getAllVideo().subscribe(
+    this.videoService.showVideosByCourseID(this.courseId).subscribe(
       (res: any) => {
         this.videos = Object.values(res)[0];
       },
