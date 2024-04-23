@@ -5,7 +5,21 @@
   <div class="">
     <div class="h1 mb-4">videos</div>
     <p class="mb-4">Add videos</p>
+
+    <div class="progress mb-3" *ngIf="uploadProgress !== null">
+      <div
+        class="progress-bar"
+        role="progressbar"
+        [style.width.%]="uploadProgress"
+        aria-valuemin="0"
+        aria-valuemax="100"
+      >
+        {{ uploadProgress }}%
+      </div>
+    </div>
+
     <form
+      enctype="multipart/form-data"
       class="bg-white py-5"
       [formGroup]="submitForm"
       (ngSubmit)="Submitted()"
@@ -17,6 +31,7 @@
           id="imageInput"
           aria-describedby="imageHelp"
           formControlName="video"
+          multiple
           (change)="saveVideoToDataBase($event)"
         />
         <div

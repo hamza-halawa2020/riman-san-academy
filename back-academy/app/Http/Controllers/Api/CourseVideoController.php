@@ -9,6 +9,8 @@ use App\Models\CourseVideo;
 use Exception;
 use Illuminate\Http\Request;
 
+
+
 class CourseVideoController extends Controller
 {
     /**
@@ -25,7 +27,6 @@ class CourseVideoController extends Controller
     }
 
 
-
     public function showVideosByCourseID($courseId)
     {
         try {
@@ -39,52 +40,102 @@ class CourseVideoController extends Controller
         }
     }
 
-
-
-
-
-
-
-
     /**
      * Store a newly created resource in storage.
      */
-    use Plupload;
 
     public function store(StoreCourseVideoRequest $request)
     {
         try {
-            // Validate the incoming request
             $validatedData = $request->validated();
             
             if ($request->hasFile('video')) {
-                // Get the uploaded file
                 $video = $request->file('video');
                 
-                // Generate a unique filename
                 $extension = $video->getClientOriginalExtension();
                 $filename = time() . '_' . uniqid() . '.' . $extension;
                 
-                // Define the folder path
                 $folderPath = 'videos/courses/' . $validatedData['course_id'];
                 
-                // Move the uploaded file to the desired location
                 $video->move(public_path($folderPath), $filename);
-                
-                // Update the validated data with the filename
+                                               
                 $validatedData['video'] = $filename;
             }
             
-            // Create a new course video record
             $video = CourseVideo::create($validatedData);
             
-            // Return a JSON response with the newly created video resource
             return new CourseVideoResource($video);
-        } catch (\Exception $e) {
-            // Handle exceptions
+        } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+
+  
+ 
+
+//     public function store(Request $request)
+//     {   
+//         $validator = \Validator::make($request->all(), [
+  
+//             'title' => 'required',
+//             'video' => 'required',
+//             'course_id' => 'required',  
+//         ]);
+  
+//         if ($validator->fails()) {
+//             return response()->json(['status' => false, 'message' => $validator->errors()->first()]);
+//         }
+  
+//         $receiver = new FileReceiver('video', $request, HandlerFactory::classFromRequest($request));
+//         if ($receiver->isUploaded() === false) {
+//             throw new UploadMissingFileException();
+//         }
+//         $save = $receiver->receive();
+//         if ($save->isFinished()) {
+//             $response =  $this->saveFile($save->getFile());
+  
+//             File::deleteDirectory(storage_path('app/chunks/'));
+  
+//             //your data insert code
+  
+//             return response()->json([
+//                 'status' => true,
+//                 'link' => url($response['link']),
+//                 'message' => 'File successfully uploaded.'
+//             ]);
+//         }
+//         $handler = $save->handler();
+//     }
+
+
+
+
+
+
+// protected function saveFile(UploadedFile $file)
+// {
+//     $fileName = $this->createFilename($file);
+//     $mime = str_replace('/', '-', $file->getMimeType());
+//     $filePath = "public/uploads/chunk_uploads/";
+//     $file->move(base_path($filePath), $fileName);
+
+//     return [
+//         'link' => $filePath . $fileName,
+//         'mime_type' => $mime
+//     ];
+// }
+
+
+// protected function createFilename(UploadedFile $file)
+// {
+//     $extension = $file->getClientOriginalExtension();
+//     $filename =  rand() . time() . "." . $extension;
+//     return $filename;
+// }
+
+
+
+    
     
     /**
      * Display the specified resource.

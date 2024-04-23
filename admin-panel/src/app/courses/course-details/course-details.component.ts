@@ -16,6 +16,7 @@ export class CourseDetailsComponent {
   apiVideo = `${environment.imgUrl}videos/videos/`;
   courseId: any;
   videoFile: any;
+  uploadProgress: any; // Variable to store upload progress
 
   constructor(
     private route: ActivatedRoute,
@@ -68,6 +69,11 @@ export class CourseDetailsComponent {
         this.error = 'Error adding video. Please try again later.';
       }
     );
+
+    // Subscribe to the progress event to track upload progress
+    this.videoService.uploadProgress.subscribe((progress) => {
+      this.uploadProgress = progress; // Update the progress bar
+    });
   }
 
   loadvideos() {
