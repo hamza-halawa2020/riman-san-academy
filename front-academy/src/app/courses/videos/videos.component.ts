@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { environment } from 'src/environments/environment';
 import { CoursesService } from '../services/courses.service';
@@ -21,6 +21,11 @@ export class VideosComponent {
     private coursesService: CoursesService
   ) {
     this.videoUrl = `${environment.imgUrl}videos/courses/`;
+  }
+
+  getVideoUrl(videoFilename: string): string {
+    const url = `${this.videoUrl}${this.courseId}/${videoFilename}`;
+    return url;
   }
 
   ngOnInit(): void {

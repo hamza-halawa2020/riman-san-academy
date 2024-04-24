@@ -11,13 +11,15 @@
             <div class="card mb-3">
               <div class="card-body">
                 <div *ngIf="selectedVideo">
-                  <video controls class="w-100">
-                    <source
-                      [src]="videoUrl + courseId + '/' + selectedVideo.video"
-                    />
+                  <div>{{ selectedVideo.title }}</div>
+                  <div>{{ selectedVideo.video }}</div>
+
+                  <video
+                    controls
+                    class="w-100"
+                    [src]="getVideoUrl(selectedVideo.video)"                  >
                     Your browser does not support the video tag.
                   </video>
-                  <div>{{ selectedVideo.title }}</div>
                 </div>
               </div>
             </div>
@@ -30,7 +32,8 @@
         <div class="card-header bg-dark text-white">Playlist</div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item" *ngFor="let video of videos">
-            <a href="javascript:void(0);"
+            <a
+              href="javascript:void(0);"
               class="text-decoration-none text-dark"
               (click)="selectVideo(video)"
               >{{ video.title }}</a
