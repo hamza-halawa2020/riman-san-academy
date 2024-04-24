@@ -1,0 +1,45 @@
+<div class="container mt-5 mb-5" *ngIf="course">
+  <div class="row">
+    <div class="col-lg-9">
+      <div>
+        <h2>{{ course.title }}</h2>
+        <p>{{ course.description }}</p>
+      </div>
+      <div class="container">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card mb-3">
+              <div class="card-body">
+                <div *ngIf="selectedVideo">
+                  <video controls class="w-100">
+                    <source
+                      [src]="videoUrl + courseId + '/' + selectedVideo.video"
+                      type="video"
+                    />
+                    Your browser does not support the video tag.
+                  </video>
+                  <div>{{ selectedVideo.title }}</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="col-lg-3">
+      <div class="card">
+        <div class="card-header bg-dark text-white">Playlist</div>
+        <ul class="list-group list-group-flush">
+          <li class="list-group-item" *ngFor="let video of videos">
+            <a
+              href="javascript:void(0);"
+              class="text-decoration-none text-dark"
+              (click)="selectVideo(video)"
+              >{{ video.title }}</a
+            >
+          </li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</div>

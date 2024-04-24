@@ -1,75 +1,70 @@
 <div class="container mt-5 mb-5" *ngIf="course">
   <div class="row">
-    <div class="col-9">
-      <div>{{ course.title }}</div>
+    <div class="col-lg-9">
       <div>
-        {{ course.description }}
+        <h2>{{ course.title }}</h2>
+        <p>{{ course.description }}</p>
+      </div>
+      <div class="container" *ngFor="let video of videos">
+        <div class="row">
+          <div class="col-md-12">
+            <div class="card mb-3">
+              <div class="card-body">
+                <h5 class="card-title">{{ video.id }}</h5>
+                <p class="card-text">{{ video.title }}</p>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
     </div>
-    <div class="col-3">
-      <div class="card" style="width: 18rem">
+    <div class="col-lg-3">
+      <div class="card">
         <img
           src="{{ imageUrl + course.img }}"
           class="card-img-top"
-          alt="{{ imageUrl + course.img }}"
+          alt="{{ course.title }}"
         />
         <div class="card-body">
           <div class="row">
             <div class="col-8">
-              <p class="">price</p>
+              <p class="text-muted">Price</p>
             </div>
             <div class="col-4">
-              <small class=""> {{ course.price }}</small>
+              <p class="font-weight-bold">{{ course.price }}</p>
             </div>
           </div>
-
           <div class="row">
             <div class="col-8">
-              <p class="">Course Duration</p>
+              <p class="text-muted">Course Duration</p>
             </div>
             <div class="col-4">
-              <small>5h 19m 5s</small>
+              <p class="font-weight-bold">5h 19m 5s</p>
             </div>
           </div>
-
           <div class="row">
             <div class="col-8">
-              <p class="">Course Level</p>
+              <p class="text-muted">Course Level</p>
             </div>
             <div class="col-4">
-              <small>Medium</small>
+              <p class="font-weight-bold">Medium</p>
             </div>
           </div>
-
           <div class="row">
             <div class="col-8">
-              <p class="">Language</p>
+              <p class="text-muted">Language</p>
             </div>
             <div class="col-4">
-              <small>Arabic</small>
+              <p class="font-weight-bold">Arabic</p>
             </div>
           </div>
-
-          <div class="mb-3">
-            <a href="#" class="btn btn-dark card-link w-100"
+          <div class="mt-3">
+            <a
+              [routerLink]="'/video/' + course.id"
+              class="btn btn-primary btn-block"
               >Enroll The Course</a
             >
           </div>
-          <div class="row">
-            <div class="col">
-              <a href="#" class="btn btn-dark card-link">Add To WishList</a>
-            </div>
-            <div class="col">
-              <a href="#" class="btn btn-dark card-link">Share Course</a>
-            </div>
-          </div>
-
-          <div class="">5 h 19 m 5 s Video Lectures</div>
-          <div>0 Quizzes</div>
-          <div>0 Assignments</div>
-          <div>0 Downloadable Resources</div>
-          <div>Full Lifetime Access</div>
-          <div>Certificate of Completion</div>
         </div>
       </div>
     </div>

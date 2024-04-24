@@ -5,6 +5,7 @@ import { SharedModule } from '../shared/shared.module';
 import { CardCourseComponent } from './card-course/card-course.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { RouterModule } from '@angular/router';
+import { VideosComponent } from './videos/videos.component';
 
 
 
@@ -12,7 +13,8 @@ import { RouterModule } from '@angular/router';
   declarations: [
     CoursesComponent,
     CardCourseComponent,
-    CourseDetailsComponent
+    CourseDetailsComponent,
+    VideosComponent
   ],
   imports: [
     CommonModule,

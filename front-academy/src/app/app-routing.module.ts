@@ -13,6 +13,7 @@ import { ContactComponent } from './contact/contact/contact.component';
 import { LoginComponent } from './sign/login/login.component';
 import { RegisterComponent } from './sign/register/register.component';
 import { MemberShipComponent } from './certificates/member-ship/member-ship.component';
+import { VideosComponent } from './courses/videos/videos.component';
 
 register();
 
@@ -32,6 +33,10 @@ const routes: Routes = [
   {
     path: 'course/:id',
     component: CourseDetailsComponent,
+  },
+  {
+    path: 'video/:id',
+    component: VideosComponent,
   },
   {
     path: 'services',

@@ -11,8 +11,9 @@ import { environment } from 'src/environments/environment';
 export class CourseDetailsComponent {
   courseId: any;
   course: any;
+  videos: any;
   imageUrl = `${environment.imgUrl}images/courses/`;
-
+  error: string = '';
 
   constructor(
     private route: ActivatedRoute,
@@ -21,6 +22,21 @@ export class CourseDetailsComponent {
 
   ngOnInit(): void {
     this.getCourseDetails();
+    this.loadvideos();
+  }
+
+  loadvideos() {
+    this.route.params.subscribe((params) => {
+      this.courseId = +params['id'];
+      this.coursesService
+        .showVideosByCourseID(this.courseId)
+        .subscribe((res: any) => {
+          this.videos = Object.values(res)[0];
+        });
+    }),
+      () => {
+        this.error = 'Error loading videos. Please try again later.';
+      };
   }
 
   getCourseDetails() {

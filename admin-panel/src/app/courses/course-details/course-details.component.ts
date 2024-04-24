@@ -16,7 +16,7 @@ export class CourseDetailsComponent {
   apiVideo = `${environment.imgUrl}videos/videos/`;
   courseId: any;
   videoFile: any;
-  uploadProgress: any; // Variable to store upload progress
+  uploadProgress: any;
 
   constructor(
     private route: ActivatedRoute,

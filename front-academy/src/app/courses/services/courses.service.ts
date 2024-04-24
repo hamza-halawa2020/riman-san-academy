@@ -16,4 +16,8 @@ export class CoursesService {
   getById(id: any) {
     return this.http.get(`${this.apiUrl}courses/${id}`);
   }
+
+  showVideosByCourseID(course_id: any) {
+    return this.http.get(`${this.apiUrl}courses/videos/${course_id}`);
+  }
 }
