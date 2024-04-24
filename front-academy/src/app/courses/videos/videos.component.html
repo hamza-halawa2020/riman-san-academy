@@ -14,7 +14,6 @@
                   <video controls class="w-100">
                     <source
                       [src]="videoUrl + courseId + '/' + selectedVideo.video"
-                      type="video"
                     />
                     Your browser does not support the video tag.
                   </video>
@@ -31,8 +30,7 @@
         <div class="card-header bg-dark text-white">Playlist</div>
         <ul class="list-group list-group-flush">
           <li class="list-group-item" *ngFor="let video of videos">
-            <a
-              href="javascript:void(0);"
+            <a href="javascript:void(0);"
               class="text-decoration-none text-dark"
               (click)="selectVideo(video)"
               >{{ video.title }}</a

@@ -39,6 +39,9 @@ export class VideosComponent {
         .showVideosByCourseID(this.courseId)
         .subscribe((res: any) => {
           this.videos = Object.values(res)[0];
+          if (this.videos.length > 0) {
+            this.selectedVideo = this.videos[0];
+          }
         });
     }),
       () => {
