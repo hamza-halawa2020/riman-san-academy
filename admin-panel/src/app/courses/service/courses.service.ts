@@ -48,7 +48,7 @@ export class CoursesService {
     return this.http.request(uploadReq).pipe(
       map((event) => {
         if (event.type === HttpEventType.UploadProgress) {
-          const progress = Math.round(100 * event.loaded);
+          const progress = Math.round((100 * event.loaded) / event.total!);
           this.uploadProgress.next(progress);
         } else if (event.type === HttpEventType.Response) {
         }

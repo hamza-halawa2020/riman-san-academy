@@ -70,9 +70,8 @@ export class CourseDetailsComponent {
       }
     );
 
-    // Subscribe to the progress event to track upload progress
     this.videoService.uploadProgress.subscribe((progress) => {
-      this.uploadProgress = progress; // Update the progress bar
+      this.uploadProgress = progress;
     });
   }
 
