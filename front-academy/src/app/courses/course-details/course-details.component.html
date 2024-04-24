@@ -5,14 +5,28 @@
         <h2>{{ course.title }}</h2>
         <p>{{ course.description }}</p>
       </div>
-      <div class="container" *ngFor="let video of videos">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card mb-3">
-              <div class="card-body">
-                <h5 class="card-title">{{ video.id }}</h5>
-                <p class="card-text">{{ video.title }}</p>
-              </div>
+
+      <div class="accordion m-auto" style="max-width: 800px">
+        <div
+          class="accordion-item mt-4"
+          *ngFor="let video of videos; let i = index"
+        >
+          <h2 class="accordion-header">
+            <button
+              class="accordion-button"
+              type="button"
+              data-bs-toggle="collapse"
+              [attr.data-bs-target]="'#panelsStayOpen-collapse-' + i"
+            >
+              {{ video.title }}
+            </button>
+          </h2>
+          <div
+            id="panelsStayOpen-collapse-{{ i }}"
+            class="accordion-collapse collapse"
+          >
+            <div class="accordion-body">
+              <p>{{ video.title }}</p>
             </div>
           </div>
         </div>
