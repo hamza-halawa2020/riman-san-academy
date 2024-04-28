@@ -1,7 +1,18 @@
 <app-page-headers [pageTitle]="pageTitle"></app-page-headers>
 
+<div
+  class="container alert alert-warning text-center"
+  *ngIf="error"
+  role="alert"
+>
+  {{ error }}
+</div>
 <div class="container mb-5 mt-5">
-  <form>
+  <form
+    class="bg-white py-5"
+    [formGroup]="loginForm"
+    (ngSubmit)="loginSubmitted()"
+  >
     <div class="mb-3">
       <label for="exampleInputName" class="form-label">Name</label>
       <input
@@ -9,7 +20,26 @@
         class="form-control"
         id="exampleInputName"
         placeholder="Enter your name"
+        formControlName="name"
       />
+      <div
+        class="form-text text-success"
+        *ngIf="name.valid && (name.touched || name.dirty)"
+      >
+        <i class="fa-solid fa-check"></i>looks good!
+      </div>
+      <div
+        class="form-text text-danger"
+        *ngIf="name.errors?.['required'] && (name.dirty || name.touched)"
+      >
+        <i class="fa-solid fa-circle-exclamation"></i>E-mail is important.
+      </div>
+      <div
+        class="form-text text-danger"
+        *ngIf="name.errors?.['pattern'] && (name.dirty || Email.touched)"
+      >
+        <i class="fa-solid fa-circle-exclamation"></i>name is invalid
+      </div>
     </div>
     <div class="mb-3">
       <label for="exampleInputEmail2" class="form-label">Email address</label>
@@ -19,7 +49,26 @@
         id="exampleInputEmail2"
         aria-describedby="emailHelp"
         placeholder="Enter email"
+        formControlName="email"
       />
+      <div
+        class="form-text text-success"
+        *ngIf="Email.valid && (Email.touched || Email.dirty)"
+      >
+        <i class="fa-solid fa-check"></i>looks good!
+      </div>
+      <div
+        class="form-text text-danger"
+        *ngIf="Email.errors?.['required'] && (Email.dirty || Email.touched)"
+      >
+        <i class="fa-solid fa-circle-exclamation"></i>E-mail is important.
+      </div>
+      <div
+        class="form-text text-danger"
+        *ngIf="Email.errors?.['pattern'] && (Email.dirty || Email.touched)"
+      >
+        <i class="fa-solid fa-circle-exclamation"></i>E-mail is invalid
+      </div>
     </div>
     <div class="mb-3">
       <label for="exampleInputName" class="form-label">Phone</label>
@@ -28,7 +77,27 @@
         class="form-control"
         id="exampleInputName"
         placeholder="Enter your phone"
+        formControlName="phone"
       />
+
+      <div
+        class="form-text text-success"
+        *ngIf="phone.valid && (phone.touched || phone.dirty)"
+      >
+        <i class="fa-solid fa-check"></i>looks good!
+      </div>
+      <div
+        class="form-text text-danger"
+        *ngIf="phone.errors?.['required'] && (phone.dirty || phone.touched)"
+      >
+        <i class="fa-solid fa-circle-exclamation"></i>E-mail is important.
+      </div>
+      <div
+        class="form-text text-danger"
+        *ngIf="phone.errors?.['pattern'] && (phone.dirty || phone.touched)"
+      >
+        <i class="fa-solid fa-circle-exclamation"></i>phone is invalid
+      </div>
     </div>
     <div class="mb-3">
       <label for="exampleInputPassword2" class="form-label">Password</label>
@@ -37,10 +106,64 @@
         class="form-control"
         id="exampleInputPassword2"
         placeholder="Password"
+        formControlName="password"
       />
+      <div
+        class="form-text text-success"
+        *ngIf="password.valid && (password.touched || password.dirty)"
+      >
+        <i class="fa-solid fa-check"></i>looks good!
+      </div>
+      <div
+        class="form-text text-danger"
+        *ngIf="password.errors?.['required'] && (password.dirty || password.touched)"
+      >
+        <i class="fa-solid fa-circle-exclamation"> </i>password is important
+      </div>
+      <div
+        class="form-text text-danger"
+        *ngIf="(password.errors?.['minlength'] || password.errors?.['maxlength']) && (password.dirty || password.touched)"
+      >
+        <i class="fa-solid fa-circle-exclamation"></i>password must be between 6
+        to 12
+      </div>
+    </div>
+    <div class="mb-3">
+      <label for="exampleInputPassword2" class="form-label">profile_img</label>
+      <input
+        type="file"
+        class="form-control"
+        id="exampleInputPassword2"
+        placeholder="profile_img"
+        formControlName="profile_img"
+      />
+      <div
+        class="form-text text-success"
+        *ngIf="profile_img.valid && (profile_img.touched || profile_img.dirty)"
+      >
+        <i class="fa-solid fa-check"></i>looks good!
+      </div>
+      <div
+        class="form-text text-danger"
+        *ngIf="profile_img.errors?.['required'] && (profile_img.dirty || profile_img.touched)"
+      >
+        <i class="fa-solid fa-circle-exclamation"></i>image is important.
+      </div>
+      <div
+        class="form-text text-danger"
+        *ngIf="profile_img.errors?.['pattern'] && (profile_img.dirty || profile_img.touched)"
+      >
+        <i class="fa-solid fa-circle-exclamation"></i>image is invalid
+      </div>
     </div>
     <div class="text-center">
-      <button type="submit" class="btn btn-primary">Register</button>
+      <button
+        type="submit"
+        [disabled]="loginForm.invalid"
+        class="btn btn-primary"
+      >
+        Register
+      </button>
     </div>
   </form>
 </div>
