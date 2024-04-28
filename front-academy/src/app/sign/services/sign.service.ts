@@ -33,7 +33,7 @@ export class SignService {
   }
 
   logout() {
-    this.cookieService.deleteAll();
-    this.router.navigate(['']);
+    this.cookieService.delete('token');
+    this.router.navigate(['/login']);
   }
 }
