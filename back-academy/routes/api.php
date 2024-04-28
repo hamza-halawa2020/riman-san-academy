@@ -35,6 +35,9 @@ Route::apiResource('courses', CourseController::class);
 
 Route::apiResource('videos', CourseVideoController::class);
 Route::get('courses/videos/{course_id}', [CourseVideoController::class, 'showVideosByCourseID']);
+Route::get('/videos/{obfuscatedId}', [CourseVideoController::class, 'getVideo']);
+Route::get('/videos/{videoId}/temporary', [CourseVideoController::class, 'getTemporaryVideoUrl']);
+
 
 Route::apiResource('carousels', CarouselController::class);
 Route::get('randomShowCarousel', [CarouselController::class, 'randomShow']);
@@ -50,4 +53,6 @@ Route::apiResource('services', ServiceContoller::class);
 Route::get('randomShowService', [ServiceContoller::class, 'randomShow']);
 
 Route::post('login', [AuthController::class, 'login']);
+Route::post('logout', [AuthController::class, 'logout']);
+Route::post('admin-login', [AuthController::class, 'adminLogin']);
 Route::post('register', [AuthController::class, 'register']);

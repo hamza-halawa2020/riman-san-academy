@@ -15,21 +15,21 @@ export class SignService {
     private cookieService: CookieService
   ) {}
   login(data: any) {
-    return this.http.post(`${this.apiUrl}login`, data);
+    return this.http.post(`${this.apiUrl}admin-login`, data);
   }
 
   setTokenInCookie(token: string) {
-    this.cookieService.set('token', token);
+    this.cookieService.set('admin-token', token);
   }
   getTokenFromCookie(): any {
-    return this.cookieService.get('token');
+    return this.cookieService.get('admin-token');
   }
   isLoggedIn() {
     return this.getTokenFromCookie();
   }
 
   logout() {
-    this.cookieService.deleteAll();
-    this.router.navigate(['']);
+    this.cookieService.delete('admin-token');
+    this.router.navigate(['/login']);
   }
 }

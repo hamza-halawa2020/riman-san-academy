@@ -41,7 +41,6 @@ import { DatePipe } from '@angular/common';
     SignModule,
     AchievementsModule,
   ],
-
   providers: [
     {
       provide: HTTP_INTERCEPTORS,

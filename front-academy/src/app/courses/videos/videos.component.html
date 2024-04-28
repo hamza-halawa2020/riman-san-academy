@@ -1,45 +1,54 @@
-<div class="container mt-5 mb-5" *ngIf="course">
-  <div class="row">
-    <div class="col-lg-9">
-      <div>
-        <h2>{{ course.title }}</h2>
-        <p>{{ course.description }}</p>
-      </div>
-      <div class="container">
-        <div class="row">
-          <div class="col-md-12">
-            <div class="card mb-3">
-              <div class="card-body">
-                <div *ngIf="selectedVideo">
-                  <div>{{ selectedVideo.title }}</div>
-                  <div>{{ selectedVideo.video }}</div>
+<div class="container">
+  <div class="container mt-5 mb-5 no-select" *ngIf="course" appDisableRightClick>
+    <div class="row">
+      <div class="col-lg-9">
+        <div>
+          <h2>{{ course.title }}</h2>
+          <p>{{ course.description }}</p>
+        </div>
+        <div class="container">
+          <div class="row">
+            <div class="col-md-12">
+              <div class="card mb-3">
+                <div class="card-body">
+                  <div *ngIf="selectedVideo">
+                    <div>{{ selectedVideo.title }}</div>
+                    <div>{{ selectedVideo.video }}</div>
 
-                  <video
-                    controls
-                    class="w-100"
-                    [src]="getVideoUrl(selectedVideo.video)"                  >
-                    Your browser does not support the video tag.
-                  </video>
+                    <video
+                      controls
+                      class="w-100"
+                      [src]="getVideoUrl(selectedVideo.video)"
+                      autoplay
+                    >
+                      Your browser does not support the video tag.
+                    </video>
+                  </div>
                 </div>
               </div>
             </div>
           </div>
         </div>
       </div>
-    </div>
-    <div class="col-lg-3">
-      <div class="card">
-        <div class="card-header bg-dark text-white">Playlist</div>
-        <ul class="list-group list-group-flush">
-          <li class="list-group-item" *ngFor="let video of videos">
-            <a
-              href="javascript:void(0);"
-              class="text-decoration-none text-dark"
-              (click)="selectVideo(video)"
-              >{{ video.title }}</a
+      <div class="col-lg-3">
+        <div class="card">
+          <div class="card-header bg-dark text-white">Playlist</div>
+
+          <ul class="list-group list-group-flush">
+            <li
+              class="list-group-item list-group-item-danger"
+              *ngFor="let video of videos"
+              [class.list-group-item-danger]="video === selectedVideo"
             >
-          </li>
-        </ul>
+              <a
+                href="javascript:void(0);"
+                class="text-decoration-none text-dark"
+                (click)="selectVideo(video)"
+                >{{ video.title }}</a
+              >
+            </li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>

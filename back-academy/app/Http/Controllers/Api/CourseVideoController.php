@@ -8,7 +8,7 @@ use App\Http\Resources\CourseVideoResource;
 use App\Models\CourseVideo;
 use Exception;
 use Illuminate\Http\Request;
-
+use Carbon\Carbon;
 
 
 class CourseVideoController extends Controller
@@ -48,57 +48,56 @@ class CourseVideoController extends Controller
     {
         try {
             $validatedData = $request->validated();
-            
+
             if ($request->hasFile('video')) {
                 $video = $request->file('video');
-                
+
                 $extension = $video->getClientOriginalExtension();
                 $filename = time() . '_' . uniqid() . '.' . $extension;
-                
+
                 $folderPath = 'videos/courses/' . $validatedData['course_id'];
-                
+
                 $video->move(public_path($folderPath), $filename);
-                                               
+
                 $validatedData['video'] = $filename;
             }
-            
+
             $video = CourseVideo::create($validatedData);
-            
+
             return new CourseVideoResource($video);
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
 
-  
- 
 
-//     public function store(Request $request)
+
+    //     public function store(Request $request)
 //     {   
 //         $validator = \Validator::make($request->all(), [
-  
-//             'title' => 'required',
+
+    //             'title' => 'required',
 //             'video' => 'required',
 //             'course_id' => 'required',  
 //         ]);
-  
-//         if ($validator->fails()) {
+
+    //         if ($validator->fails()) {
 //             return response()->json(['status' => false, 'message' => $validator->errors()->first()]);
 //         }
-  
-//         $receiver = new FileReceiver('video', $request, HandlerFactory::classFromRequest($request));
+
+    //         $receiver = new FileReceiver('video', $request, HandlerFactory::classFromRequest($request));
 //         if ($receiver->isUploaded() === false) {
 //             throw new UploadMissingFileException();
 //         }
 //         $save = $receiver->receive();
 //         if ($save->isFinished()) {
 //             $response =  $this->saveFile($save->getFile());
-  
-//             File::deleteDirectory(storage_path('app/chunks/'));
-  
-//             //your data insert code
-  
-//             return response()->json([
+
+    //             File::deleteDirectory(storage_path('app/chunks/'));
+
+    //             //your data insert code
+
+    //             return response()->json([
 //                 'status' => true,
 //                 'link' => url($response['link']),
 //                 'message' => 'File successfully uploaded.'
@@ -112,21 +111,21 @@ class CourseVideoController extends Controller
 
 
 
-// protected function saveFile(UploadedFile $file)
+    // protected function saveFile(UploadedFile $file)
 // {
 //     $fileName = $this->createFilename($file);
 //     $mime = str_replace('/', '-', $file->getMimeType());
 //     $filePath = "public/uploads/chunk_uploads/";
 //     $file->move(base_path($filePath), $fileName);
 
-//     return [
+    //     return [
 //         'link' => $filePath . $fileName,
 //         'mime_type' => $mime
 //     ];
 // }
 
 
-// protected function createFilename(UploadedFile $file)
+    // protected function createFilename(UploadedFile $file)
 // {
 //     $extension = $file->getClientOriginalExtension();
 //     $filename =  rand() . time() . "." . $extension;
@@ -135,8 +134,8 @@ class CourseVideoController extends Controller
 
 
 
-    
-    
+
+
     /**
      * Display the specified resource.
      */

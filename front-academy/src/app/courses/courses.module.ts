@@ -6,20 +6,16 @@ import { CardCourseComponent } from './card-course/card-course.component';
 import { CourseDetailsComponent } from './course-details/course-details.component';
 import { RouterModule } from '@angular/router';
 import { VideosComponent } from './videos/videos.component';
-
-
+import { DisableRightClickDirective } from '../disable-right-click/disable-right-click.directive';
 
 @NgModule({
   declarations: [
     CoursesComponent,
     CardCourseComponent,
     CourseDetailsComponent,
-    VideosComponent
+    DisableRightClickDirective,
+    VideosComponent,
   ],
-  imports: [
-    CommonModule,
-    SharedModule,
-    RouterModule
-  ]
+  imports: [CommonModule, SharedModule, RouterModule],
 })
-export class CoursesModule { }
+export class CoursesModule {}
