@@ -85,6 +85,14 @@ class AuthController extends Controller
     {
         try {
             $validatedData = $request->validated();
+            if ($request->hasFile('profile_img')) {
+                $image = $request->file('profile_img');
+                $extension = $image->getClientOriginalExtension();
+                $filename = time() . '_' . uniqid() . '.' . $extension;
+                $folderPath = 'images/users/';
+                $image->move(public_path($folderPath), $filename);
+                $validatedData['profile_img'] = $filename;
+            }
             $user = User::create($validatedData);
             return response()->json(['data' => new UserResource($user)], 201);
         } catch (Exception $e) {

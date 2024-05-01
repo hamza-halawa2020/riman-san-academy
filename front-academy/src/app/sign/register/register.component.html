@@ -10,8 +10,8 @@
 <div class="container mb-5 mt-5">
   <form
     class="bg-white py-5"
-    [formGroup]="loginForm"
-    (ngSubmit)="loginSubmitted()"
+    [formGroup]="registerForm"
+    (ngSubmit)="registerSubmitted()"
   >
     <div class="mb-3">
       <label for="exampleInputName" class="form-label">Name</label>
@@ -129,13 +129,16 @@
       </div>
     </div>
     <div class="mb-3">
-      <label for="exampleInputPassword2" class="form-label">profile_img</label>
+      <label for="exampleInputPassword2" class="form-label"
+        >profile image</label
+      >
       <input
         type="file"
         class="form-control"
         id="exampleInputPassword2"
         placeholder="profile_img"
         formControlName="profile_img"
+        (change)="saveImageToDataBase($event)"
       />
       <div
         class="form-text text-success"
@@ -159,7 +162,7 @@
     <div class="text-center">
       <button
         type="submit"
-        [disabled]="loginForm.invalid"
+        [disabled]="registerForm.invalid"
         class="btn btn-primary"
       >
         Register
