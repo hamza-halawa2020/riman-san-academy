@@ -2,8 +2,8 @@
   <div class="container">
     <a class="navbar-brand" routerLink="/">
       <img
-        src="https://london-academy.org/photos/shares/logo/logo.png"
-        class="img-fluid"
+        src="{{ 'assets/images/logo.png' }}"
+        class="img-fluid logo"
         width="200px"
         alt="Logo"
       />
@@ -21,33 +21,33 @@
       <span class="navbar-toggler-icon"></span>
     </button>
     <!-- Navbar content -->
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+    <div class="collapse navbar-collapse " id="navbarSupportedContent">
+      <ul class="navbar-nav ms-auto mb-2 mb-lg-0 ">
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/">HOME</a>
+          <a class="nav-link color-hover" aria-current="page" routerLink="/">HOME</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/about-us"
+          <a class="nav-link color-hover" aria-current="page" routerLink="/about-us"
             >ABOUT US</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/courses"
+          <a class="nav-link color-hover" aria-current="page" routerLink="/courses"
             >COURSES</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/services"
+          <a class="nav-link color-hover" aria-current="page" routerLink="/services"
             >SERVICES</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" aria-current="page" routerLink="/achievements"
+          <a class="nav-link color-hover" aria-current="page" routerLink="/achievements"
             >ACHIEVEMENTS</a
           >
         </li>
         <li class="nav-item">
-          <a class="nav-link" routerLink="/accredited-certificates">
+          <a class="nav-link color-hover" routerLink="/accredited-certificates">
             CERTIFICATES
           </a>
           <!-- <ul class="dropdown-menu">
@@ -66,16 +66,16 @@
           </ul> -->
         </li>
         <li>
-          <a class="nav-link" routerLink="/contact-us"> CONTACT US </a>
+          <a class="nav-link color-hover" routerLink="/contact-us"> CONTACT US </a>
         </li>
         <li *ngIf="!isLoggedIn()">
-          <a class="nav-link" routerLink="/login">LOGIN</a>
+          <a class="nav-link color-hover" routerLink="/login">LOGIN</a>
         </li>
         <li *ngIf="!isLoggedIn()">
-          <a class="nav-link" routerLink="/register">REGISTER</a>
+          <a class="nav-link color-hover" routerLink="/register">REGISTER</a>
         </li>
         <li *ngIf="isLoggedIn()">
-          <a class="nav-link" routerLink="" (click)="logout()">LOG OUT</a>
+          <a class="nav-link color-hover" routerLink="" (click)="logout()">LOG OUT</a>
         </li>
       </ul>
     </div>

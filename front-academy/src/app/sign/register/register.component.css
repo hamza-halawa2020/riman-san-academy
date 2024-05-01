@@ -1,0 +1,9 @@
+.size {
+    font-size: 18px;
+    padding: 15px 45px;
+    background-color: #986743;
+  
+  }
+  .size:hover{
+    background-color:#573014;
+  }

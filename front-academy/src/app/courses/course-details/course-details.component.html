@@ -45,37 +45,20 @@
               <p class="text-muted">Price</p>
             </div>
             <div class="col-4">
-              <p class="font-weight-bold">{{ course.price }}</p>
+              <p class="font-weight-bold">{{ course.price }} <small class="text-dark font-weight-bold">L.E</small></p>
             </div>
-          </div>
-          <div class="row">
             <div class="col-8">
-              <p class="text-muted">Course Duration</p>
+              <p class="text-muted">title</p>
             </div>
             <div class="col-4">
-              <p class="font-weight-bold">5h 19m 5s</p>
+              <p class="font-weight-bold">{{ course.title }}</p>
             </div>
           </div>
-          <div class="row">
-            <div class="col-8">
-              <p class="text-muted">Course Level</p>
-            </div>
-            <div class="col-4">
-              <p class="font-weight-bold">Medium</p>
-            </div>
-          </div>
-          <div class="row">
-            <div class="col-8">
-              <p class="text-muted">Language</p>
-            </div>
-            <div class="col-4">
-              <p class="font-weight-bold">Arabic</p>
-            </div>
-          </div>
+
           <div class="mt-3">
             <a
               [routerLink]="'/video/' + course.id"
-              class="btn btn-primary btn-block"
+              class="btn size text-white btn-block"
               >Enroll The Course</a
             >
           </div>
