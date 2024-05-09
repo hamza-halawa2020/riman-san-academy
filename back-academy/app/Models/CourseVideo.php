@@ -18,4 +18,8 @@ class CourseVideo extends Model
     {
         return $this->belongsTo(Course::class);
     }
+    public function videos()
+    {
+        return $this->hasMany(Video::class);
+    }
 }

@@ -20,6 +20,6 @@ class AccessVideosToUser extends Model
 
     public function videos()
     {
-        return $this->belongsTo(User::class);
+        return $this->belongsTo(Video::class);
     }
 }

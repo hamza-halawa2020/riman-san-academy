@@ -3,6 +3,10 @@
 namespace Database\Seeders;
 
 // use Illuminate\Database\Console\Seeds\WithoutModelEvents;
+
+use App\Models\About;
+use App\Models\Achievement;
+use App\Models\Service;
 use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
@@ -23,5 +27,8 @@ class DatabaseSeeder extends Seeder
             'password' => '123456',
             'role' => 'admin',
         ]);
+        About::factory(5)->create();
+        Service::factory(5)->create();
+        Achievement::factory(5)->create();
     }
 }

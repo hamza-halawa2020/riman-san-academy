@@ -31,6 +31,10 @@ class User extends Authenticatable
     {
         return $this->hasMany(Course::class);
     }
+    public function accessVideoToUser()
+    {
+        return $this->hasMany(AccessVideosToUser::class);
+    }
     /**
      * The attributes that should be hidden for serialization.
      *
