@@ -35,106 +35,35 @@ class CourseVideoController extends Controller
 
 
 
-    // public function showVideosByCourseID($courseId)
-    // {
-    //     try {
-    //         $userId = Auth::id();
-    
-    //         if ($userId) {
-    //             $videoIds = AccessVideosToUser::where('user_id', $userId)
-    //                 ->pluck('video_id')
-    //                 ->toArray();
-    //             $videos = CourseVideo::with('course')
-    //                 ->with('videos')
-    //                 ->where('course_id', $courseId)
-    //                 ->whereIn('id', $videoIds)
-    //                 ->get();
-    //             return CourseVideoResource::collection($videos);
-    //         } else {
-    //             $videos = CourseVideo::with('course')
-    //                 ->where('course_id', $courseId)
-    //                 // ->select('id', 'title', 'description')
-    //                 ->get();
-    //             return response()->json('fdfd');
-    //         }
-    //     } catch (Exception $e) {
-    //         return response()->json(['error' => $e->getMessage()], 500);
-    //     }
-    // }
 
 
+    public function showVideosByCourseID($courseId)
+    {
+        try {
+            $userId = Auth::id();
 
-   
-public function showVideosByCourseID($courseId)
-{
-    try {
-        $userId = Auth::id();
-
-        if ($userId) {
-            $videoIds = AccessVideosToUser::where('user_id', $userId)
-                ->pluck('video_id')
-                ->toArray();
-            $videos = CourseVideo::with('course')
-                ->with('videos')
-                ->where('course_id', $courseId)
-                ->get();
-            return CourseVideoResource::collection($videos);
-        } else {
-            $videos = CourseVideo::with('course')
-                ->where('course_id', $courseId)
-                ->get();
-            return response()->json($videos);
+            if ($userId) {
+                $videoIds = AccessVideosToUser::where('user_id', $userId)
+                    ->pluck('video_id')
+                    ->toArray();
+                $videos = CourseVideo::with('course')
+                    ->with('videos')
+                    ->where('course_id', $courseId)
+                    ->get();
+                return CourseVideoResource::collection($videos);
+            } else {
+                $videos = CourseVideo::with('course')
+                    ->where('course_id', $courseId)
+                    ->get();
+                return response()->json($videos);
+            }
+        } catch (Exception $e) {
+            return response()->json(['error' => $e->getMessage()], 500);
         }
-    } catch (Exception $e) {
-        return response()->json(['error' => $e->getMessage()], 500);
     }
-}
 
 
 
-
-
-// public function showVideosByCourseID($courseId)
-// {
-//     try {
-//         $userId = Auth::id();
-
-//         if ($userId) {
-//             $videoIds = AccessVideosToUser::where('user_id', $userId)
-//                 ->pluck('video_id')
-//                 ->toArray();
-
-//             $videosWithAccess = CourseVideo::with('course')
-//                 ->with('videos')
-//                 ->where('course_id', $courseId)
-//                 ->whereIn('id', $videoIds)
-//                 ->get();
-
-//             $videosWithoutAccess = CourseVideo::with('course')
-//                 ->with('videos')
-//                 ->where('course_id', $courseId)
-//                 ->whereNotIn('id', $videoIds)
-//                 ->get();
-
-//             $result = $videosWithAccess->merge($videosWithoutAccess);
-
-//             return CourseVideoResource::collection($result);
-//         } else {
-//             $videos = CourseVideo::with('course')
-//                 ->with('videos')
-//                 ->where('course_id', $courseId)
-//                 ->get();
-
-//             return CourseVideoResource::collection($videos);
-//         }
-//     } catch (Exception $e) {
-//         return response()->json(['error' => $e->getMessage()], 500);
-//     }
-// }
-
-    /**
-     * Store a newly created resource in storage.
-     */
 
     public function store(StoreCourseVideoRequest $request)
     {
