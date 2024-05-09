@@ -6,6 +6,7 @@ namespace Database\Seeders;
 
 use App\Models\About;
 use App\Models\Achievement;
+use App\Models\Course;
 use App\Models\Service;
 use Illuminate\Database\Seeder;
 
@@ -30,5 +31,6 @@ class DatabaseSeeder extends Seeder
         About::factory(5)->create();
         Service::factory(5)->create();
         Achievement::factory(5)->create();
+        Course::factory(5)->create();
     }
 }

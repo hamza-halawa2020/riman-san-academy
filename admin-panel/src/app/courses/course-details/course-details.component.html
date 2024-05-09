@@ -91,9 +91,9 @@
           <tr>
             <th>ID</th>
             <th>Title</th>
-            <th>video</th>
+            <th>Description</th>
             <th>course_id</th>
-            <th>Image</th>
+            <th>video</th>
             <th>Action</th>
           </tr>
         </thead>
@@ -101,16 +101,9 @@
           <tr *ngFor="let video of videos">
             <td>{{ video.id }}</td>
             <td>{{ video.title }}</td>
-            <td>{{ video.video }}</td>
-
+            <td>{{ video.description }}</td>
             <td>{{ video.course_id }}</td>
-            <td>
-              <img
-                src="{{ apiVideo + video.video }}"
-                alt="{{ video.image }}"
-                width="50px"
-              />
-            </td>
+            <td>{{ video.video }}</td>
 
             <td>
               <!-- Button trigger modal -->

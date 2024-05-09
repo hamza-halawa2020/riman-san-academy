@@ -14,6 +14,17 @@ class CourseVideoResource extends JsonResource
      */
     public function toArray(Request $request): array
     {
-        return parent::toArray($request);
+        // return parent::toArray($request);
+
+        return [
+            'id' => $this->id,
+            'title' => $this->title,
+            'course_id' => $this->course_id,
+            'description' => $this->description,
+            // 'video' => $this->videos, 
+            'video' => $this->videos->first()->video, // Assuming each CourseVideo has only one associated video
+
+            
+        ];
     }
 }

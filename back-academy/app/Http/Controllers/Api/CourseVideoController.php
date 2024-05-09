@@ -19,7 +19,7 @@ class CourseVideoController extends Controller
     public function index()
     {
         try {
-            $vidoes = CourseVideo::with('course')->get();
+            $vidoes = CourseVideo::with('course')->with('videos')->get();
             return CourseVideoResource::collection($vidoes);
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
@@ -31,6 +31,7 @@ class CourseVideoController extends Controller
     {
         try {
             $videos = CourseVideo::with('course')
+                ->with('videos')
                 ->where('course_id', $courseId)
                 ->get();
 
