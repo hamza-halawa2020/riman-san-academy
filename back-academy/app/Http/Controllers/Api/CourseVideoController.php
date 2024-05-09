@@ -5,17 +5,24 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourseVideoRequest;
 use App\Http\Resources\CourseVideoResource;
+use App\Models\AccessVideosToUser;
 use App\Models\CourseVideo;
+use App\Models\Video;
 use Exception;
 use Illuminate\Http\Request;
 use Carbon\Carbon;
-
+use Illuminate\Support\Facades\Auth;
 
 class CourseVideoController extends Controller
 {
     /**
      * Display a listing of the resource.
      */
+
+    function __construct()
+    {
+        $this->middleware("auth:sanctum");
+    }
     public function index()
     {
         try {
@@ -27,19 +34,103 @@ class CourseVideoController extends Controller
     }
 
 
-    public function showVideosByCourseID($courseId)
-    {
-        try {
+
+    // public function showVideosByCourseID($courseId)
+    // {
+    //     try {
+    //         $userId = Auth::id();
+    
+    //         if ($userId) {
+    //             $videoIds = AccessVideosToUser::where('user_id', $userId)
+    //                 ->pluck('video_id')
+    //                 ->toArray();
+    //             $videos = CourseVideo::with('course')
+    //                 ->with('videos')
+    //                 ->where('course_id', $courseId)
+    //                 ->whereIn('id', $videoIds)
+    //                 ->get();
+    //             return CourseVideoResource::collection($videos);
+    //         } else {
+    //             $videos = CourseVideo::with('course')
+    //                 ->where('course_id', $courseId)
+    //                 // ->select('id', 'title', 'description')
+    //                 ->get();
+    //             return response()->json('fdfd');
+    //         }
+    //     } catch (Exception $e) {
+    //         return response()->json(['error' => $e->getMessage()], 500);
+    //     }
+    // }
+
+
+
+   
+public function showVideosByCourseID($courseId)
+{
+    try {
+        $userId = Auth::id();
+
+        if ($userId) {
+            $videoIds = AccessVideosToUser::where('user_id', $userId)
+                ->pluck('video_id')
+                ->toArray();
             $videos = CourseVideo::with('course')
                 ->with('videos')
                 ->where('course_id', $courseId)
                 ->get();
-
             return CourseVideoResource::collection($videos);
-        } catch (Exception $e) {
-            return response()->json(['error' => $e->getMessage()], 500);
+        } else {
+            $videos = CourseVideo::with('course')
+                ->where('course_id', $courseId)
+                ->get();
+            return response()->json($videos);
         }
+    } catch (Exception $e) {
+        return response()->json(['error' => $e->getMessage()], 500);
     }
+}
+
+
+
+
+
+// public function showVideosByCourseID($courseId)
+// {
+//     try {
+//         $userId = Auth::id();
+
+//         if ($userId) {
+//             $videoIds = AccessVideosToUser::where('user_id', $userId)
+//                 ->pluck('video_id')
+//                 ->toArray();
+
+//             $videosWithAccess = CourseVideo::with('course')
+//                 ->with('videos')
+//                 ->where('course_id', $courseId)
+//                 ->whereIn('id', $videoIds)
+//                 ->get();
+
+//             $videosWithoutAccess = CourseVideo::with('course')
+//                 ->with('videos')
+//                 ->where('course_id', $courseId)
+//                 ->whereNotIn('id', $videoIds)
+//                 ->get();
+
+//             $result = $videosWithAccess->merge($videosWithoutAccess);
+
+//             return CourseVideoResource::collection($result);
+//         } else {
+//             $videos = CourseVideo::with('course')
+//                 ->with('videos')
+//                 ->where('course_id', $courseId)
+//                 ->get();
+
+//             return CourseVideoResource::collection($videos);
+//         }
+//     } catch (Exception $e) {
+//         return response()->json(['error' => $e->getMessage()], 500);
+//     }
+// }
 
     /**
      * Store a newly created resource in storage.
