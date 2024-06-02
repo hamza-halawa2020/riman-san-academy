@@ -70,6 +70,8 @@ class CourseVideoController extends Controller
         try {
             $validatedData = $request->validated();
 
+
+
             if ($request->hasFile('video')) {
                 $video = $request->file('video');
 
@@ -79,9 +81,10 @@ class CourseVideoController extends Controller
                 $folderPath = 'videos/courses/' . $validatedData['course_id'];
 
                 $video->move(public_path($folderPath), $filename);
-
                 $validatedData['video'] = $filename;
+
             }
+            $data = Video::create(['video' => $filename, 'course_video_id' => 9]);
 
             $video = CourseVideo::create($validatedData);
 

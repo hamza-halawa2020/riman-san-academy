@@ -24,6 +24,7 @@ class StoreCourseVideoRequest extends FormRequest
         return [
             'title' => 'required',
             'video' => 'required',
+            'description' => 'required',
             'course_id' => 'required',
         ];
     }

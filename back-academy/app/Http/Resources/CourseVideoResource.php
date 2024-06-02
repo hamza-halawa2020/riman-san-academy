@@ -21,10 +21,10 @@ class CourseVideoResource extends JsonResource
             'title' => $this->title,
             'course_id' => $this->course_id,
             'description' => $this->description,
-            'video' => $this->videos, 
+            'video' => new VideoResource('video'),
             // 'video' => $this->videos->first()->video, // Assuming each CourseVideo has only one associated video
 
-            
+
         ];
     }
 }
