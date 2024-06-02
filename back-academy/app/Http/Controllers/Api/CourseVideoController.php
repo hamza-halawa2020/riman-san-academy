@@ -35,8 +35,6 @@ class CourseVideoController extends Controller
 
 
 
-
-
     public function showVideosByCourseID($courseId)
     {
         try {
@@ -65,34 +63,67 @@ class CourseVideoController extends Controller
 
 
 
+    // public function store(StoreCourseVideoRequest $request)
+    // {
+    //     try {
+    //         $validatedData = $request->validated();
+
+    //         if ($request->hasFile('video')) {
+    //             $video = $request->file('video');
+
+    //             $extension = $video->getClientOriginalExtension();
+    //             $filename = time() . '_' . uniqid() . '.' . $extension;
+
+    //             $folderPath = 'videos/courses/' . $validatedData['course_id'];
+
+    //             $video->move(public_path($folderPath), $filename);
+
+    //             $validatedData['video'] = $filename;
+    //         }
+    //         $data = Video::create(['video' => $filename, 'course_video_id' => 19]);
+
+    //         $video = CourseVideo::create($validatedData);
+
+    //         return new CourseVideoResource(['video' => $video, 'data' => $data]);
+    //     } catch (Exception $e) {
+    //         return response()->json(['error' => $e->getMessage()], 500);
+    //     }
+    // }
+
+
+
+
+
+
     public function store(StoreCourseVideoRequest $request)
     {
         try {
             $validatedData = $request->validated();
 
-
-
             if ($request->hasFile('video')) {
-                $video = $request->file('video');
-
-                $extension = $video->getClientOriginalExtension();
+                $videoFile = $request->file('video');
+                $extension = $videoFile->getClientOriginalExtension();
                 $filename = time() . '_' . uniqid() . '.' . $extension;
-
                 $folderPath = 'videos/courses/' . $validatedData['course_id'];
 
-                $video->move(public_path($folderPath), $filename);
+                $videoFile->move(public_path($folderPath), $filename);
                 $validatedData['video'] = $filename;
-
             }
-            $data = Video::create(['video' => $filename, 'course_video_id' => 9]);
 
-            $video = CourseVideo::create($validatedData);
+            $courseVideo = CourseVideo::create($validatedData);
+            $video = Video::create([
+                'video' => $filename,
+                'course_video_id' => $courseVideo->id,
+            ]);
 
-            return new CourseVideoResource($video);
+            $courseVideo->load('videos');
+
+            return new CourseVideoResource($courseVideo);
         } catch (Exception $e) {
             return response()->json(['error' => $e->getMessage()], 500);
         }
     }
+
 
 
 

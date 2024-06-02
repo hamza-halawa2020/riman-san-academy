@@ -20,6 +20,6 @@ class CourseVideo extends Model
     }
     public function videos()
     {
-        return $this->hasMany(Video::class);
+        return $this->hasOne(Video::class, 'course_video_id');
     }
 }
