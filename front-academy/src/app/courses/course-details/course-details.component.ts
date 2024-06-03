@@ -32,6 +32,7 @@ export class CourseDetailsComponent {
         .showVideosByCourseID(this.courseId)
         .subscribe((res: any) => {
           this.videos = Object.values(res)[0];
+          console.log(this.videos);
         });
     }),
       () => {

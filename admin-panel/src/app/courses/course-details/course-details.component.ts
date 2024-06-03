@@ -30,6 +30,7 @@ export class CourseDetailsComponent {
   submitForm = new FormGroup({
     title: new FormControl('', [Validators.required]),
     video: new FormControl('', [Validators.required]),
+    description: new FormControl('', [Validators.required]),
   });
 
   get title(): FormControl {
@@ -38,12 +39,19 @@ export class CourseDetailsComponent {
   get video(): FormControl {
     return this.submitForm.get('video') as FormControl;
   }
+  get description(): FormControl {
+    return this.submitForm.get('description') as FormControl;
+  }
 
   Submitted() {
     if (this.submitForm.valid) {
       this.formSubmitted = true;
       const formData = new FormData();
       formData.append('title', this.submitForm.value.title as string);
+      formData.append(
+        'description',
+        this.submitForm.value.description as string
+      );
       formData.append('course_id', this.courseId);
 
       formData.append('video', this.videoFile as string);
@@ -63,7 +71,7 @@ export class CourseDetailsComponent {
       (res: any) => {
         this.loadvideos();
         this.submitForm.reset();
-        this.error = 'video added successfully.';
+        // this.error = 'video added successfully.';
       },
       () => {
         this.error = 'Error adding video. Please try again later.';
@@ -78,11 +86,9 @@ export class CourseDetailsComponent {
   loadvideos() {
     this.route.params.subscribe((params) => {
       this.courseId = +params['id'];
-      this.videoService
-        .showVideosByCourseID(this.courseId)
-        .subscribe((res: any) => {
-          this.videos = Object.values(res)[0];
-        });
+      this.videoService.showByCourseID(this.courseId).subscribe((res: any) => {
+        this.videos = Object.values(res)[0];
+      });
     }),
       () => {
         this.error = 'Error loading videos. Please try again later.';

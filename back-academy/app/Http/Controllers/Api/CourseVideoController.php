@@ -5,12 +5,11 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Http\Requests\StoreCourseVideoRequest;
 use App\Http\Resources\CourseVideoResource;
-use App\Models\AccessVideosToUser;
+use App\Models\AccessCoursesToUser;
 use App\Models\CourseVideo;
 use App\Models\Video;
 use Exception;
 use Illuminate\Http\Request;
-use Carbon\Carbon;
 use Illuminate\Support\Facades\Auth;
 
 class CourseVideoController extends Controller
@@ -41,11 +40,10 @@ class CourseVideoController extends Controller
             $userId = Auth::id();
 
             if ($userId) {
-                $videoIds = AccessVideosToUser::where('user_id', $userId)
-                    ->pluck('video_id')
+                $videoIds = AccessCoursesToUser::where('user_id', $userId)
+                    ->pluck('course_id')
                     ->toArray();
-                $videos = CourseVideo::with('course')
-                    ->with('videos')
+                $videos = CourseVideo::with('course', 'videos')
                     ->where('course_id', $courseId)
                     ->get();
                 return CourseVideoResource::collection($videos);

@@ -70,6 +70,31 @@
         </div>
       </div>
 
+      <div class="mb-3">
+        <input
+          type="text"
+          class="form-control"
+          id="titleInput"
+          aria-describedby="titleHelp"
+          placeholder="description"
+          formControlName="description"
+        />
+        <div
+          class="form-text text-success"
+          *ngIf="
+            description.valid && (description.touched || description.dirty)
+          "
+        >
+          <i class="fas fa-check"></i> Looks good!
+        </div>
+        <div
+          class="form-text text-danger"
+          *ngIf="description.errors?.['required'] && (description.dirty || description.touched)"
+        >
+          <i class="fas fa-exclamation-circle"></i> description is required.
+        </div>
+      </div>
+
       <div class="container mt-5 mb-5">
         <button
           type="submit"
@@ -97,13 +122,13 @@
             <th>Action</th>
           </tr>
         </thead>
-        <tbody>
-          <tr *ngFor="let video of videos">
+        <tbody *ngFor="let video of videos?.course_videos">
+          <tr>
             <td>{{ video.id }}</td>
             <td>{{ video.title }}</td>
             <td>{{ video.description }}</td>
             <td>{{ video.course_id }}</td>
-            <td>{{ video.video }}</td>
+            <td>{{ video.video.video }}</td>
 
             <td>
               <!-- Button trigger modal -->

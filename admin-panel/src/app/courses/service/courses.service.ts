@@ -1,13 +1,7 @@
 import { environment } from 'src/environments/environment';
-
 import { Injectable } from '@angular/core';
-import {
-  HttpClient,
-  HttpEvent,
-  HttpEventType,
-  HttpRequest,
-} from '@angular/common/http';
-import { Observable, Subject, catchError, map } from 'rxjs';
+import { HttpClient, HttpEventType, HttpRequest } from '@angular/common/http';
+import { Observable, Subject, map } from 'rxjs';
 
 @Injectable({
   providedIn: 'root',
@@ -58,6 +52,10 @@ export class CoursesService {
 
   showVideosByCourseID(course_id: any) {
     return this.http.get(`${this.apiUrl}courses/videos/${course_id}`);
+  }
+
+  showByCourseID(course_id: any) {
+    return this.http.get(`${this.apiUrl}courses/${course_id}`);
   }
 
   deleteVideo(id: any) {

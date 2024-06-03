@@ -18,8 +18,5 @@ class Video extends Model
     {
         return $this->belongsTo(CourseVideo::class);
     }
-    public function accessVideoToUser()
-    {
-        return $this->hasMany(AccessVideosToUser::class);
-    }
+   
 }
